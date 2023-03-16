@@ -27,18 +27,6 @@ En el ambiente virtual instale west (se debe iniciar el ambiente virtual cada ve
 pip install west
 ```
 
-Después clone este repositorio (Ejemplo con http)
-
-```
-git init
-git clone https://github.com/Diseno-electronico-2023-1/evse-rp2040-hardware.git
-```
-Luego obtenga el código fuente de Zephyr:
-
-```
-cd evse-rp2040-hardware
-```
-
 Luego obtenga el código fuente de Zephyr:
 
 ```
