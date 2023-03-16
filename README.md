@@ -32,7 +32,6 @@ Después clone este repositorio (Ejemplo con http)
 ```
 git init
 git clone https://github.com/Diseno-electronico-2023-1/evse-rp2040-hardware.git
-git pull
 ```
 Luego obtenga el código fuente de Zephyr:
 
