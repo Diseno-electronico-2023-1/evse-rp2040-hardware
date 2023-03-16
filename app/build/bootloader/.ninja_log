@@ -1,0 +1,7 @@
+# ninja log v5
+6	116	7005452939053347	CMakeFiles/boot_stage2.dir/C_/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	2710e105d1eac4aa
+118	777	7005452944597166	boot_stage2	17bca18dd190509b
+118	777	7005452944597166	boot_stage2.bin	17bca18dd190509b
+118	777	7005452944597166	boot_stage2.S	17bca18dd190509b
+118	777	7005452944597166	C:/Users/sergi/zephyrproject/applications/app/build/bootloader/boot_stage2.bin	17bca18dd190509b
+118	777	7005452944597166	C:/Users/sergi/zephyrproject/applications/app/build/bootloader/boot_stage2.S	17bca18dd190509b
