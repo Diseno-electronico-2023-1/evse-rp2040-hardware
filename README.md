@@ -63,6 +63,8 @@ git clone https://github.com/Diseno-electronico-2023-1/evse-rp2040-hardware.git
 ```
 
 Su jerarquía de carpetas debe quedar asi
+
+
 ![image](https://user-images.githubusercontent.com/76027960/225695480-95798ff3-9ca3-42b7-b33f-a52da15752df.png)
 
 EL código fuente de la aplicación con Zephyr esta listo, pero para compilarlo deberá instalar los SDK.
