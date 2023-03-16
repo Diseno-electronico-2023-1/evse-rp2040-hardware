@@ -49,7 +49,7 @@ pip install -r %HOMEPATH%\zephyrproject\zephyr\scripts\requirements.txt
 ```
 EL código fuente de la aplicación con Zephyr esta listo, pero para compilarlo deberá instalar los SDK.
 
-## Intalando los SDK
+### Intalando los SDK
 
 En cmd.exe (fuera del ambiente virtual creado previamente) ejecute los siguientes comandos:
 
@@ -61,10 +61,10 @@ cd zephyr-sdk-0.15.2
 setup.cmd
 ```
 
-## Ejecutar la aplicación
+### Ejecutar la aplicación
 Una vez instalado el entorno de trabajo de Zephyr, la aplicación se ejecuta haciendo la Build y luego el Flash a la tarjeta.
 
-### Compilar la aplicación
+#### Compilar la aplicación
 Para compilar la aplicación en una RP2040 ingrese a la carpeta de la aplicación que desea compilar (Ejemplo para ingresar a App)
 
 ```
@@ -78,7 +78,7 @@ west build -p always -b rpi_pico
 ```
 
 Se creará automaticamente una carpeta llamada *build*
-### Flashear la tarjeta
+#### Flashear la tarjeta
 Conecte la RP2040 via USB mientras mantiene oprimido el botón de **boot**. Windows lo reconocerá como un disco externo. Ingrese a la carpeta *build* previamente creada y luego a *zephyr* (*build/zephyr*). Copie el archivo *zephyr.uf2* y peguelo dentro el disco duro externo que representa la memoria de la tarjeta RP2040 conectada.
 
 
