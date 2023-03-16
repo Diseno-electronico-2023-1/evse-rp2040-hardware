@@ -37,7 +37,8 @@ Luego obtenga el código fuente de Zephyr:
 
 ```
 cd evse-rp2040-hardware
-=======
+```
+
 Luego obtenga el código fuente de Zephyr:
 
 ```
