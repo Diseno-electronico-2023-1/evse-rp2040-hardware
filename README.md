@@ -27,7 +27,6 @@ En el ambiente virtual instale west (se debe iniciar el ambiente virtual cada ve
 pip install west
 ```
 
-<<<<<<< HEAD
 Después clone este repositorio (Ejemplo con http)
 
 ```
@@ -44,7 +43,6 @@ Luego obtenga el código fuente de Zephyr:
 ```
 west init zephyrproject
 cd zephyrproject
->>>>>>> a98512c7f6ce9df7ad80b3e2e3882ac21b1b76a7
 west update
 ```
 
@@ -54,8 +52,6 @@ Exporte el CMake de Zephyr e instale las dependencias adicionales de Python
 west zephyr-exportwest update
 pip install -r %HOMEPATH%\zephyrproject\zephyr\scripts\requirements.txt
 ```
-<<<<<<< HEAD
-=======
 
 Después clone este repositorio en la carpeta zephyrproject (Ejemplo con http)
 
@@ -65,8 +61,9 @@ git init
 git clone https://github.com/Diseno-electronico-2023-1/evse-rp2040-hardware.git
 ```
 
+Su jerarquía de carpetas debe quedar asi
+![image](https://user-images.githubusercontent.com/76027960/225695480-95798ff3-9ca3-42b7-b33f-a52da15752df.png)
 
->>>>>>> a98512c7f6ce9df7ad80b3e2e3882ac21b1b76a7
 EL código fuente de la aplicación con Zephyr esta listo, pero para compilarlo deberá instalar los SDK.
 
 ### Intalando los SDK
@@ -88,11 +85,7 @@ Una vez instalado el entorno de trabajo de Zephyr, la aplicación se ejecuta hac
 Para compilar la aplicación en una RP2040 ingrese a la carpeta de la aplicación que desea compilar (Ejemplo para ingresar a App)
 
 ```
-<<<<<<< HEAD
-cd applications/app
-=======
 cd %HOMEPATH%\zephyrproject\evse-rp2040-hardware\app
->>>>>>> a98512c7f6ce9df7ad80b3e2e3882ac21b1b76a7
 ```
 
 Luego ejecute el siguiente comando
