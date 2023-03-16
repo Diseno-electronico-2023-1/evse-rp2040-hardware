@@ -51,7 +51,7 @@ EL código fuente de la aplicación con Zephyr esta listo, pero para compilarlo 
 
 ## Intalando los SDK
 
-En cmd.exe ejecute los siguientes comandos:
+En cmd.exe (fuera del ambiente virtual creado previamente) ejecute los siguientes comandos:
 
 ```
 cd %HOMEPATH%
