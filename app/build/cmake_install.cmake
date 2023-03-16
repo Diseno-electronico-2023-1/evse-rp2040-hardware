@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/sergi/zephyrproject/applications/app
+# Install script for directory: C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/applications/app/build/zephyr/cmake_install.cmake")
+  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/sergi/zephyrproject/applications/app/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

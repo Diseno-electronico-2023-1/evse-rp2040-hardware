@@ -1,13 +1,13 @@
 linker_zephyr_pre1.cmd: \
  C:/Users/sergi/zephyrproject/zephyr/soc/arm/rpi_pico/rp2/linker.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/autoconf.h \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/autoconf.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/arch/arm/aarch32/cortex_m/scripts/linker.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/sections.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/section_tags.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/toolchain.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/toolchain/gcc.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/devicetree.h \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/devicetree_generated.h \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/devicetree_generated.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/sys/util.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/sys/util_macro.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/sys/util_internal.h \
@@ -28,12 +28,12 @@ linker_zephyr_pre1.cmd: \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/devicetree_regions.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/linker-defs.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/toolchain/common.h \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/offsets.h \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/offsets.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/linker-tool.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/linker-tool-gcc.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/sys/mem_manage.h \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/rel-sections.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-rom-start.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-rom-start.ld \
  c:\users\sergi\zephyrproject\zephyr\arch\common\rom_start_offset.ld \
  c:\users\sergi\zephyrproject\zephyr\arch\arm\core\aarch32\vector_table.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/irq-vector-table-section.ld \
@@ -50,18 +50,18 @@ linker_zephyr_pre1.cmd: \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/common-rom/common-rom-debug.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/common-rom/common-rom-misc.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/thread-local-storage.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-rodata.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-rodata.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/kobject-rom.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/cplusplus-rom.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-ram-sections.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-ram-sections.ld \
  c:\users\sergi\zephyrproject\zephyr\arch\common\ramfunc.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-ramfunc-section.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-rwdata.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-ramfunc-section.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-rwdata.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/common-ram.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/kobject-data.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/cplusplus-ram.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-data-sections.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-noinit.ld \
- C:/Users/sergi/zephyrproject/applications/app/build/zephyr/include/generated/snippets-sections.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-data-sections.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-noinit.ld \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/include/generated/snippets-sections.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/intlist.ld \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/linker/debug-sections.ld

@@ -1,6 +1,6 @@
 C:\Users\sergi\zephyr-sdk-0.15.2\cmake\zephyr\Kconfig
-C:\Users\sergi\zephyrproject\applications\app\build\Kconfig\Kconfig.dts
-C:\Users\sergi\zephyrproject\applications\app\build\Kconfig\Kconfig.modules
+C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\Kconfig\Kconfig.dts
+C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\Kconfig\Kconfig.modules
 C:\Users\sergi\zephyrproject\modules\audio\sof\Kconfig.sof
 C:\Users\sergi\zephyrproject\modules\audio\sof\Kconfig.xtos-build
 C:\Users\sergi\zephyrproject\modules\audio\sof\Kconfig.xtos-dbg

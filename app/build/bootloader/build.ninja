@@ -34,7 +34,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:/Users/sergi/zephyrproject/applications/app/build/bootloader/
+cmake_ninja_workdir = C$:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/
 # =============================================================================
 # Object build statements for EXECUTABLE target boot_stage2
 
@@ -64,7 +64,7 @@ build CMakeFiles/boot_stage2.dir/C_/Users/sergi/zephyrproject/modules/hal/rpi_pi
 build boot_stage2 boot_stage2.bin boot_stage2.S | ${cmake_ninja_workdir}boot_stage2.bin ${cmake_ninja_workdir}boot_stage2.S: ASM_EXECUTABLE_LINKER__boot_stage2_ CMakeFiles/boot_stage2.dir/C_/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj
   LINK_FLAGS = -nostartfiles --specs=nosys.specs -Wl,--script=C:/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot_stage2.ld
   OBJECT_DIR = CMakeFiles\boot_stage2.dir
-  POST_BUILD = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\applications\app\build\bootloader && C:\Users\sergi\zephyr-sdk-0.15.2\arm-zephyr-eabi\bin\arm-zephyr-eabi-objcopy.exe -Obinary C:/Users/sergi/zephyrproject/applications/app/build/bootloader/boot_stage2 boot_stage2.bin && cd /D C:\Users\sergi\zephyrproject\applications\app\build\bootloader && C:\Users\sergi\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\python3.10.exe C:/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/pad_checksum -s 0xffffffff boot_stage2.bin C:/Users/sergi/zephyrproject/applications/app/build/bootloader/boot_stage2.S"
+  POST_BUILD = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader && C:\Users\sergi\zephyr-sdk-0.15.2\arm-zephyr-eabi\bin\arm-zephyr-eabi-objcopy.exe -Obinary C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/boot_stage2 boot_stage2.bin && cd /D C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader && C:\Users\sergi\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.10_qbz5n2kfra8p0\python3.10.exe C:/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/pad_checksum -s 0xffffffff boot_stage2.bin C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/boot_stage2.S"
   PRE_LINK = cd .
   RESTAT = 1
   TARGET_COMPILE_PDB = CMakeFiles\boot_stage2.dir\
@@ -76,7 +76,7 @@ build boot_stage2 boot_stage2.bin boot_stage2.S | ${cmake_ninja_workdir}boot_sta
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\applications\app\build\bootloader && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\sergi\zephyrproject\zephyr\modules\hal_rpi_pico\bootloader -BC:\Users\sergi\zephyrproject\applications\app\build\bootloader"
+  COMMAND = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader && "C:\Program Files\CMake\bin\cmake-gui.exe" -SC:\Users\sergi\zephyrproject\zephyr\modules\hal_rpi_pico\bootloader -BC:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader"
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -88,7 +88,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\applications\app\build\bootloader && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sergi\zephyrproject\zephyr\modules\hal_rpi_pico\bootloader -BC:\Users\sergi\zephyrproject\applications\app\build\bootloader"
+  COMMAND = cmd.exe /C "cd /D C:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader && "C:\Program Files\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\sergi\zephyrproject\zephyr\modules\hal_rpi_pico\bootloader -BC:\Users\sergi\zephyrproject\evse-rp2040-hardware\app\build\bootloader"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -104,7 +104,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/sergi/zephyrproject/applications/app/build/bootloader
+# Folder: C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader
 
 build all: phony boot_stage2
 

@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/sergi/zephyrproject/applications/app/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

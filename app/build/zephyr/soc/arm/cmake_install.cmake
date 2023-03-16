@@ -39,11 +39,11 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/applications/app/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
+  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/soc/arm/common/cortex_m/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/applications/app/build/zephyr/soc/arm/rpi_pico/cmake_install.cmake")
+  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/soc/arm/rpi_pico/cmake_install.cmake")
 endif()
 
