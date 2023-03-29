@@ -88,5 +88,9 @@ west build -p always -b rpi_pico
 Se creará automaticamente una carpeta llamada *build*
 #### Flashear la tarjeta
 Conecte la RP2040 via USB mientras mantiene oprimido el botón de **boot**. Windows lo reconocerá como un disco externo. Ingrese a la carpeta *build* previamente creada y luego a *zephyr* (*build/zephyr*). Copie el archivo *zephyr.uf2* y peguelo dentro el disco duro externo que representa la memoria de la tarjeta RP2040 conectada.
+Pruebe desde la ruta "\zephyrproject\evse-rp2040-hardware\app" el siguiente comando para Windows (El disco externo reconocido para la placa debe ser E:\ si es otro reemplácelo, por ejemplo D:\):
+```
+copy .\build\zephyr\zephyr.uf2 E:\
+```
 
 
