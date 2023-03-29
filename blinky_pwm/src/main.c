@@ -15,6 +15,7 @@
 #include <zephyr/drivers/pwm.h>
 
 static const struct pwm_dt_spec pwm_led0 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led0));
+static const struct pwm_dt_spec pwm_led1 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led1));
 
 #define MIN_PERIOD PWM_SEC(1U) / 128U
 #define MAX_PERIOD PWM_SEC(1U)
@@ -31,6 +32,12 @@ void main(void)
 	if (!device_is_ready(pwm_led0.dev)) {
 		printk("Error: PWM device %s is not ready\n",
 		       pwm_led0.dev->name);
+		return;
+	}
+
+	if (!device_is_ready(pwm_led1.dev)) {
+		printk("Error: PWM device %s is not ready\n",
+		       pwm_led1.dev->name);
 		return;
 	}
 
@@ -53,12 +60,19 @@ void main(void)
 		}
 	}
 
+
 	printk("Done calibrating; maximum/minimum periods %u/%lu nsec\n",
 	       max_period, MIN_PERIOD);
 
 	period = max_period;
 	while (1) {
 		ret = pwm_set_dt(&pwm_led0, period, period / 2U);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
+
+		ret = pwm_set_dt(&pwm_led1, period, period / 2U);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
 			return;
