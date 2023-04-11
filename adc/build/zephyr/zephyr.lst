@@ -3809,7 +3809,7 @@ static inline bool z_impl_device_is_ready(const struct device *dev)
 
 		}
 
-		k_sleep(K_MSEC(1000));
+		k_sleep(K_MSEC(5000));
 	}
 }
 10001e4e:	b00b      	add	sp, #44	; 0x2c
@@ -3981,7 +3981,7 @@ static inline bool z_impl_device_is_ready(const struct device *dev)
 10001f70:	100061e8 	.word	0x100061e8
 10001f74:	100061f6 	.word	0x100061f6
 10001f78:	10006209 	.word	0x10006209
-10001f7c:	00002710 	.word	0x00002710
+10001f7c:	0000c350 	.word	0x0000c350
 10001f80:	10006177 	.word	0x10006177
 10001f84:	01dcd650 	.word	0x01dcd650
 10001f88:	1000621e 	.word	0x1000621e
