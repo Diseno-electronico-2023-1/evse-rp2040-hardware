@@ -35,3 +35,10 @@ pwm_leds {
 	divider-frac-4 = <15>;
 	divider-int-4 = <255>;
 };
+
+&uart0 {
+	current-speed = <115200>;
+	status = "okay";
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-names = "default";
+};

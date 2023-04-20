@@ -138,8 +138,19 @@ void main(void)
 			}
 
 			printk("\n");
+
+			k_sleep(K_MSEC(4000));
+
+			//apagar el led
+			ret = pwm_set_dt(&pwm_led0, T, 0);
+			if (ret) {
+				printk("Error %d: failed to set pulse width\n", ret);
+				return;
+			}
+			k_sleep(K_MSEC(4000));
 		}
 
-		k_sleep(K_MSEC(1000));
+	
+
 	}
 }
