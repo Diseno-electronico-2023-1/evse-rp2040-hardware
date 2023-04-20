@@ -8,7 +8,7 @@
 
 / {
 	zephyr,user {
-		io-channels = <&adc 0>;
+		io-channels = <&adc 0>, <&adc 1>;
 	};
 };
 
@@ -23,13 +23,7 @@
 		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
 		zephyr,resolution = <12>;
 	};
-	channel@1 {
-		reg = <0>;
-		zephyr,gain = "ADC_GAIN_1";
-		zephyr,reference = "ADC_REF_INTERNAL";
-		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
-		zephyr,resolution = <12>;
-	};
+
 };
 
 &pwm_led0 {
