@@ -75,6 +75,7 @@ void main(void)
 	}
 
 	 //############## MAIN PWM #######################
+	uint32_t min_period;
 	uint32_t max_period;
 	uint32_t period;
 	int ret;
@@ -123,7 +124,6 @@ void main(void)
 
 
 
-
 	while (1) {
 
 		//############# INIT ADC ####################
@@ -158,22 +158,23 @@ void main(void)
 
 
 			//################# CHANGE PWM ######################
-			period = PWM_MSEC(500U);
+			if(i==0){
 			duty_cycle = buf/sizeof(buf)*period;
+			//period = (adc_read(adc_channels[0].dev, &sequence)/sizeof(buf))*PWM_MSEC(1000U);
 			ret = pwm_set_dt(&pwm_led0, period, duty_cycle);
 			if (ret) {
 				printk("Error %d: failed to set pulse width\n", ret);
 				return;
 			}
 
-			ret = pwm_set_dt(&pwm_led1, period, duty_cycle);
-			if (ret) {
-				printk("Error %d: failed to set pulse width\n", ret);
-				return;
-			}
+			//ret = pwm_set_dt(&pwm_led1, period, duty_cycle);
+			//if (ret) {
+			//	printk("Error %d: failed to set pulse width\n", ret);
+			//	return;
+			//}
 
 			k_sleep(K_SECONDS(4U));
-
+		}
 
 		}
 

@@ -17,6 +17,7 @@
 
 	aliases {
 		pwm-led1 = &pwm_led1;
+		adcctrl = &adc;
 	};
 };
 
@@ -42,6 +43,7 @@
 };
 
 &adc {
+	status = "okay";
 	#address-cells = <1>;
 	#size-cells = <0>;
 

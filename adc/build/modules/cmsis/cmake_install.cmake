@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/sergi/zephyrproject/modules/hal/cmsis
+# Install script for directory: C:/Users/ediso/zephyrproject/modules/hal/cmsis
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,11 +34,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/sergi/zephyr-sdk-0.15.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/adc/build/modules/cmsis/CMSIS/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/adc/build/modules/cmsis/CMSIS/cmake_install.cmake")
 endif()
 

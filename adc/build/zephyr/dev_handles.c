@@ -15,7 +15,7 @@ __devicehdl_dts_ord_7[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 2, 4, 5, DEVIC
  *    - /soc/reset-controller@4000c000
  */
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
-__devicehdl_dts_ord_40[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
+__devicehdl_dts_ord_41[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
 
 /* 3 : /soc/gpio@40014000:
  */
