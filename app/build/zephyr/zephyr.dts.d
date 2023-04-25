@@ -11,4 +11,7 @@ empty_file.o: C:/Users/sergi/zephyrproject/zephyr/misc/empty_file.c \
  C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rpi_pico_common.dtsi \
  C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi \
  C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h \
- C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h
+ C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/boards/rpi_pico.overlay \
+ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/boards/rpi_pico-pinctrl.dtsi \
+ C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/adc.h

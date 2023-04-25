@@ -131,6 +131,9 @@ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/usb/C
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/usb/CMakeFiles/rebuild_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/usb_c/CMakeFiles/edit_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/usb_c/CMakeFiles/rebuild_cache.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/adc/CMakeFiles/drivers__adc.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/adc/CMakeFiles/edit_cache.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/adc/CMakeFiles/rebuild_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
@@ -140,6 +143,9 @@ C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/gpio/
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/edit_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pwm/CMakeFiles/drivers__pwm.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pwm/CMakeFiles/edit_cache.dir
+C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pwm/CMakeFiles/rebuild_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/reset/CMakeFiles/drivers__reset.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/reset/CMakeFiles/edit_cache.dir
 C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/reset/CMakeFiles/rebuild_cache.dir

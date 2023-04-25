@@ -16,6 +16,11 @@
 		led0 = &led0;
 		watchdog0 = &wdt0;
 		pwm-led0 = &pwm_led0;
+		led1 = &led1;
+		led2 = &led2;
+		pwm-led1 = &pwm_led1;
+		pwm-led2 = &pwm_led2;
+		pwm-led3 = &pwm_led3;
 	};
 	soc {
 		#address-cells = < 0x1 >;
@@ -153,7 +158,23 @@
 			#io-channel-cells = < 0x1 >;
 			pinctrl-0 = < &adc_default >;
 			pinctrl-names = "default";
+			#address-cells = < 0x1 >;
+			#size-cells = < 0x0 >;
 			phandle = < 0xb >;
+			channel@0 {
+				reg = < 0x0 >;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_INTERNAL";
+				zephyr,acquisition-time = < 0x0 >;
+				zephyr,resolution = < 0xc >;
+			};
+			channel@1 {
+				reg = < 0x1 >;
+				zephyr,gain = "ADC_GAIN_1";
+				zephyr,reference = "ADC_REF_INTERNAL";
+				zephyr,acquisition-time = < 0x0 >;
+				zephyr,resolution = < 0xc >;
+			};
 		};
 		i2c0: i2c@40044000 {
 			compatible = "snps,designware-i2c";
@@ -200,11 +221,15 @@
 			clocks = < &system_clk >;
 			interrupts = < 0x4 0x3 >;
 			interrupt-names = "PWM_IRQ_WRAP";
-			status = "disabled";
+			status = "okay";
 			#pwm-cells = < 0x3 >;
-			pinctrl-0 = < &pwm_ch4b_default >;
+			pinctrl-0 = < &pwm_chn_used >;
 			pinctrl-names = "default";
 			divider-int-0 = < 0xff >;
+			divider-frac-3 = < 0xf >;
+			divider-int-3 = < 0xff >;
+			divider-frac-4 = < 0xf >;
+			divider-int-4 = < 0xff >;
 			phandle = < 0xd >;
 		};
 		vreg: vreg@40064000 {
@@ -259,10 +284,10 @@
 				input-enable;
 			};
 		};
-		pwm_ch4b_default: pwm_ch4b_default {
+		pwm_ch4b_default: pwm_chn_used: pwm_ch4b_default {
 			phandle = < 0xa >;
 			group1 {
-				pinmux = < 0x94 >;
+				pinmux = < 0x194 >;
 			};
 		};
 		adc_default: adc_default {
@@ -281,7 +306,15 @@
 	leds {
 		compatible = "gpio-leds";
 		led0: led_0 {
-			gpios = < &gpio0 0x1b 0x0 >;
+			gpios = < &gpio0 0x19 0x0 >;
+			label = "LED";
+		};
+		led1: led_1 {
+			gpios = < &gpio0 0x2 0x0 >;
+			label = "LED";
+		};
+		led2: led_2 {
+			gpios = < &gpio0 0x3 0x0 >;
 			label = "LED";
 		};
 	};
@@ -297,6 +330,23 @@
 		pwm_led0: pwm_led_0 {
 			pwms = < &pwm 0x9 0x1312d00 0x0 >;
 			label = "PWM_LED";
+			status = "okay";
 		};
+		pwm_led1: pwm_led_1 {
+			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			label = "PWM_LED";
+		};
+		pwm_led2: pwm_led_2 {
+			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			label = "PWM_LED";
+		};
+		pwm_led3: pwm_led_3 {
+			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			label = "PWM_LED";
+			status = "okay";
+		};
+	};
+	zephyr,user {
+		io-channels = < &adc 0x0 >, < &adc 0x1 >;
 	};
 };

@@ -1,0 +1,113 @@
+#include "rpi_pico-pinctrl.dtsi"
+#include <zephyr/dt-bindings/adc/adc.h>
+
+
+/ {
+	zephyr,user {
+		io-channels = <&adc 0>, <&adc 1>;
+	};
+
+	pwm_leds {
+		compatible = "pwm-leds";
+		status = "disabled";
+		pwm_led1: pwm_led_1 {
+			pwms = <&pwm 7 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+		};
+		pwm_led2: pwm_led_2 {
+			pwms = <&pwm 7 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+		};
+		pwm_led3: pwm_led_3 {
+			pwms = <&pwm 7 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+			status = "okay";
+		};
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led1: led_1 {
+			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+			label = "LED";
+		};
+		led2: led_2 {
+			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+			label = "LED";
+		};
+	};
+
+	aliases {
+		led1 = &led1;
+		led2 = &led2;
+		pwm-led1 = &pwm_led1;
+		pwm-led2 = &pwm_led2;
+		pwm-led3 = &pwm_led3;
+	};
+
+};
+
+
+&pwm_led0 {
+	status = "okay";
+};
+&pwm_led1 {
+	status = "okay";
+};
+&pwm_led2 {
+	status = "okay";
+};
+&pwm_led3 {
+	status = "okay";
+};
+
+
+&pwm {
+	status = "okay";
+
+	pinctrl-0 = <&pwm_chn_used>;
+
+	// for pwm chanel 3 A and B
+
+	divider-frac-3 = <15>;
+	divider-int-3 = <255>;
+	
+	// for pwm chanel 4 A and B
+	
+	divider-frac-4 = <15>;
+	divider-int-4 = <255>;
+
+	// for pwm chanel 7 A and B
+	
+	divider-frac-7 = <15>;
+	divider-int-7 = <255>;
+};
+
+&uart0 {
+	current-speed = <115200>;
+	status = "okay";
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-names = "default";
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+	
+	channel@1 {
+		reg = <1>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+
+};
