@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/sergi/zephyrproject/modules/hal/telink
+# Install script for directory: /home/afrodri/zephyrproject/modules/hal/telink
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/Zephyr-Kernel")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,6 +34,6 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/sergi/zephyr-sdk-0.15.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "/home/afrodri/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump")
 endif()
 

@@ -1,7 +1,7 @@
-# 0 "C:/Users/sergi/zephyrproject/zephyr/misc/empty_file.c"
+# 0 "/home/afrodri/zephyrproject/zephyr/misc/empty_file.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
-# 1 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 1
+# 1 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 1
 
 
 
@@ -10,28 +10,28 @@
 
 /dts-v1/;
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/common/freq.h" 1 3 4
-# 10 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/common/freq.h" 1 3 4
+# 10 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 1 3 4
-
-
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 1 3 4
 
 
 
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 1 3 4
 
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/common/skeleton.dtsi" 1 3 4
-# 9 "C:/Users/sergi/zephyrproject/zephyr/dts/common/skeleton.dtsi" 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 1 3 4
+
+
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/common/skeleton.dtsi" 1 3 4
+# 9 "/home/afrodri/zephyrproject/zephyr/dts/common/skeleton.dtsi" 3 4
 / {
  #address-cells = <1>;
  #size-cells = <1>;
  chosen { };
  aliases { };
 };
-# 4 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 2 3 4
+# 4 "/home/afrodri/zephyrproject/zephyr/dts/arm/armv6-m.dtsi" 2 3 4
 
 / {
  soc {
@@ -55,18 +55,20 @@
   };
  };
 };
-# 8 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
-# 1 "C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
-# 9 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
-# 1 "C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
-# 10 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
-# 1 "C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/regulator/rpi_pico.h" 1 3 4
-# 11 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/common/mem.h" 1 3 4
-# 12 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 8 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/adc/adc.h" 1 3 4
+# 9 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/gpio/gpio.h" 1 3 4
+# 10 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/i2c/i2c.h" 1 3 4
+# 11 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/regulator/rpi_pico.h" 1 3 4
+# 12 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/common/mem.h" 1 3 4
+# 13 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rpi_pico_common.dtsi" 1 3 4
-# 14 "C:/Users/sergi/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
+# 1 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rpi_pico_common.dtsi" 1 3 4
+# 15 "/home/afrodri/zephyrproject/zephyr/dts/arm/rpi_pico/rp2040.dtsi" 2 3 4
 
 / {
  aliases {
@@ -242,6 +244,19 @@
    #pwm-cells = <3>;
   };
 
+  dma: dma@50000000 {
+   compatible = "raspberrypi,pico-dma";
+   reg = <0x50000000 ((64) * 1024)>;
+   resets = <&reset 2>;
+   clocks = <&system_clk>;
+   interrupts = <11 3>,
+         <12 3>;
+   interrupt-names = "dma0", "dma1";
+   dma-channels = <12>;
+   status = "disabled";
+   #dma-cells = <3>;
+  };
+
   vreg: vreg@40064000 {
    compatible = "raspberrypi,core-supply-regulator";
    reg = <0x40064000 1>;
@@ -265,15 +280,15 @@
 &nvic {
  arm,num-irq-priority-bits = <3>;
 };
-# 12 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
-# 1 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 1
+# 12 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 1 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 1
 
 
 
 
 
-# 1 "C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h" 1 3 4
-# 7 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 2
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/pinctrl/rpi-pico-rp2040-pinctrl.h" 1 3 4
+# 7 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico-pinctrl.dtsi" 2
 
 &pinctrl {
  uart0_default: uart0_default {
@@ -285,7 +300,6 @@
    input-enable;
   };
  };
-
 
  i2c0_default: i2c0_default {
   group1 {
@@ -318,9 +332,9 @@
   };
  };
 };
-# 13 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
-# 1 "C:/Users/sergi/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
-# 14 "C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 13 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
+# 1 "/home/afrodri/zephyrproject/zephyr/include/zephyr/dt-bindings/pwm/pwm.h" 1 3 4
+# 14 "/home/afrodri/zephyrproject/zephyr/boards/arm/rpi_pico/rpi_pico.dts" 2
 
 
 
@@ -441,8 +455,8 @@ zephyr_udc0: &usbd {
  regulator-allowed-modes = <0x0>;
 };
 # 0 "<command-line>" 2
-# 1 "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico.overlay" 1
-# 1 "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico-pinctrl.dtsi" 1
+# 1 "/home/afrodri/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico.overlay" 1
+# 1 "/home/afrodri/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico-pinctrl.dtsi" 1
 
 
 
@@ -505,7 +519,7 @@ zephyr_udc0: &usbd {
   };
  };
 };
-# 2 "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico.overlay" 2
+# 2 "/home/afrodri/zephyrproject/evse-rp2040-hardware/display/boards/rpi_pico.overlay" 2
 
 / {
 pwm_leds {
@@ -565,4 +579,4 @@ pwm_leds {
  divider-int-4 = <255>;
 };
 # 0 "<command-line>" 2
-# 1 "C:/Users/sergi/zephyrproject/zephyr/misc/empty_file.c"
+# 1 "/home/afrodri/zephyrproject/zephyr/misc/empty_file.c"

@@ -4,6 +4,6 @@
 
 method=source_dir
 command=
-source_dir=C:/Users/sergi/zephyrproject/zephyr/modules/hal_rpi_pico/bootloader
+source_dir=/home/afrodri/zephyrproject/zephyr/modules/hal_rpi_pico/bootloader
 work_dir=
 
