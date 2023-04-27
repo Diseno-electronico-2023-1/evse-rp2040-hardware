@@ -1,7 +1,7 @@
 # ninja log v5
-0	76	1682531144767345188	CMakeFiles/boot_stage2.dir/home/afrodri/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	6fc54914bc01d65a
-77	205	1682531144891346977	boot_stage2	4ed47f15597d4f28
-77	205	1682531144891346977	boot_stage2.bin	4ed47f15597d4f28
-77	205	1682531144891346977	boot_stage2.S	4ed47f15597d4f28
-77	205	1682531144891346977	/home/afrodri/zephyrproject/evse-rp2040-hardware/display/build/bootloader/boot_stage2.bin	4ed47f15597d4f28
-77	205	1682531144891346977	/home/afrodri/zephyrproject/evse-rp2040-hardware/display/build/bootloader/boot_stage2.S	4ed47f15597d4f28
+0	60	1682608771298878436	CMakeFiles/boot_stage2.dir/home/afrodri/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	6fc54914bc01d65a
+60	177	1682608771406879172	boot_stage2	4ed47f15597d4f28
+60	177	1682608771406879172	boot_stage2.bin	4ed47f15597d4f28
+60	177	1682608771406879172	boot_stage2.S	4ed47f15597d4f28
+60	177	1682608771406879172	/home/afrodri/zephyrproject/evse-rp2040-hardware/display/build/bootloader/boot_stage2.bin	4ed47f15597d4f28
+60	177	1682608771406879172	/home/afrodri/zephyrproject/evse-rp2040-hardware/display/build/bootloader/boot_stage2.S	4ed47f15597d4f28

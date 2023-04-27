@@ -4,7 +4,7 @@
 #include <zephyr/drivers/display.h>
 #include <zephyr/logging/log.h>
 
-#include "Charging_10.h"
+#include "Logo_b.h"
 
 #define DISPLAY_BUFFER_PITCH 128
 
