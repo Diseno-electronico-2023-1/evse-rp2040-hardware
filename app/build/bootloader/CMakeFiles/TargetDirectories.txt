@@ -1,3 +1,3 @@
-C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/boot_stage2.dir
-C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/edit_cache.dir
-C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/rebuild_cache.dir
+C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/boot_stage2.dir
+C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/edit_cache.dir
+C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/bootloader/CMakeFiles/rebuild_cache.dir

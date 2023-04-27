@@ -85,7 +85,7 @@ Tips:
   in devicetree.
 
 - If you're not sure what to do, check the devicetrees for supported boards which
-  use the same SoC as your target. See :ref:`get-devicetree-outputs` for details.
+  use the same SoC as your target. See :ref:`get-devicetree-outputs` for details ( :).
 
 - See :zephyr_file:`include/zephyr/dt-bindings/gpio/gpio.h` for the flags you can use
   in devicetree.

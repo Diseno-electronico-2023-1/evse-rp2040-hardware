@@ -7,6 +7,7 @@
  *    - /soc/adc@4004c000
  *    - /soc/pwm@40050000
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_7[6];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
 __devicehdl_dts_ord_7[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 2, 4, 6, DEVICE_HANDLE_ENDS };
 
@@ -14,11 +15,13 @@ __devicehdl_dts_ord_7[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 2, 4, 6, DEVIC
  * Direct Dependencies:
  *    - /soc/reset-controller@4000c000
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_52[4];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
-__devicehdl_dts_ord_49[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
+__devicehdl_dts_ord_52[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
 
 /* 3 : /soc/gpio@40014000:
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_12[3];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
 __devicehdl_dts_ord_12[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
 
@@ -26,6 +29,7 @@ __devicehdl_dts_ord_12[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE
  * Direct Dependencies:
  *    - /soc/reset-controller@4000c000
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_8[4];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
 __devicehdl_dts_ord_8[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
 
@@ -33,13 +37,15 @@ __devicehdl_dts_ord_8[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HAND
  * Supported:
  *    - /soc/i2c@40044000/ssd1306@3c
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_65[4];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
-__devicehdl_dts_ord_62[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 7, DEVICE_HANDLE_ENDS };
+__devicehdl_dts_ord_65[] = { DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, 7, DEVICE_HANDLE_ENDS };
 
 /* 6 : /soc/pwm@40050000:
  * Direct Dependencies:
  *    - /soc/reset-controller@4000c000
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_38[4];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
 __devicehdl_dts_ord_38[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
 
@@ -47,5 +53,6 @@ __devicehdl_dts_ord_38[] = { 1, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HAN
  * Direct Dependencies:
  *    - /soc/i2c@40044000
  */
+extern const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2"))) __devicehdl_dts_ord_66[4];
 const Z_DECL_ALIGN(device_handle_t) __attribute__((__section__(".__device_handles_pass2")))
-__devicehdl_dts_ord_63[] = { 5, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
+__devicehdl_dts_ord_66[] = { 5, DEVICE_HANDLE_SEP, DEVICE_HANDLE_SEP, DEVICE_HANDLE_ENDS };
