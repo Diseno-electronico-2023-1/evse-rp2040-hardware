@@ -1,7 +1,14 @@
 // C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/zephyr/zephyr_pre0.elf
 digraph "Device dependency graph" {
 	7 [label="reset-controller@4000c000\nOrdinal: 7 | Handle: 1\n/soc/reset-controller@4000c000"]
-	38 [label="uart@40034000\nOrdinal: 38 | Handle: 2\n/soc/uart@40034000"]
-	14 [label="gpio@40014000\nOrdinal: 14 | Handle: 3\n/soc/gpio@40014000"]
+	49 [label="uart@40034000\nOrdinal: 49 | Handle: 2\n/soc/uart@40034000"]
+	12 [label="gpio@40014000\nOrdinal: 12 | Handle: 3\n/soc/gpio@40014000"]
+	8 [label="adc@4004c000\nOrdinal: 8 | Handle: 4\n/soc/adc@4004c000"]
+	62 [label="i2c@40044000\nOrdinal: 62 | Handle: 5\n/soc/i2c@40044000"]
+	38 [label="pwm@40050000\nOrdinal: 38 | Handle: 6\n/soc/pwm@40050000"]
+	63 [label="ssd1306@3c\nOrdinal: 63 | Handle: 7\n/soc/i2c@40044000/ssd1306@3c"]
 	7 -> 38
+	7 -> 49
+	7 -> 8
+	62 -> 63
 }
