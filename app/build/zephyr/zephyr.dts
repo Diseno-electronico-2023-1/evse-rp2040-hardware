@@ -21,6 +21,11 @@
 		pwm-led1 = &pwm_led1;
 		pwm-led2 = &pwm_led2;
 		pwm-led3 = &pwm_led3;
+		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &button2;
+		sw3 = &button3;
+		sw4 = &button4;
 	};
 	soc {
 		#address-cells = < 0x1 >;
@@ -188,6 +193,19 @@
 			clock-frequency = < 0x186a0 >;
 			pinctrl-0 = < &i2c0_default >;
 			pinctrl-names = "default";
+			ssd1306: ssd1306@3c {
+				compatible = "solomon,ssd1306fb";
+				reg = < 0x3c >;
+				height = < 0x40 >;
+				width = < 0x80 >;
+				segment-offset = < 0x0 >;
+				page-offset = < 0x0 >;
+				display-offset = < 0x0 >;
+				multiplex-ratio = < 0x3f >;
+				prechargep = < 0x22 >;
+				com-invdir;
+				segment-remap;
+			};
 		};
 		i2c1: i2c@40048000 {
 			compatible = "snps,designware-i2c";
@@ -228,8 +246,8 @@
 			divider-int-0 = < 0xff >;
 			divider-frac-3 = < 0xf >;
 			divider-int-3 = < 0xff >;
-			divider-frac-4 = < 0xf >;
-			divider-int-4 = < 0xff >;
+			divider-frac-7 = < 0xf >;
+			divider-int-7 = < 0xff >;
 			phandle = < 0xd >;
 		};
 		vreg: vreg@40064000 {
@@ -335,10 +353,12 @@
 		pwm_led1: pwm_led_1 {
 			pwms = < &pwm 0x7 0x1312d00 0x0 >;
 			label = "PWM_LED";
+			status = "okay";
 		};
 		pwm_led2: pwm_led_2 {
 			pwms = < &pwm 0x7 0x1312d00 0x0 >;
 			label = "PWM_LED";
+			status = "okay";
 		};
 		pwm_led3: pwm_led_3 {
 			pwms = < &pwm 0x7 0x1312d00 0x0 >;
@@ -348,5 +368,28 @@
 	};
 	zephyr,user {
 		io-channels = < &adc 0x0 >, < &adc 0x1 >;
+	};
+	buttons {
+		compatible = "gpio-keys";
+		button0: button_0 {
+			gpios = < &gpio0 0x6 0x11 >;
+			label = "User button";
+		};
+		button1: button_1 {
+			gpios = < &gpio0 0x7 0x11 >;
+			label = "User button";
+		};
+		button2: button_2 {
+			gpios = < &gpio0 0x8 0x11 >;
+			label = "User button";
+		};
+		button3: button_3 {
+			gpios = < &gpio0 0x9 0x11 >;
+			label = "User button";
+		};
+		button4: button_4 {
+			gpios = < &gpio0 0xa 0x11 >;
+			label = "User button";
+		};
 	};
 };
