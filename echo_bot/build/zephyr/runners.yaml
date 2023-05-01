@@ -13,14 +13,17 @@ debug-runner: openocd
 
 # Common runner configuration values.
 config:
-  board_dir: C:/Users/sergi/zephyrproject/zephyr/boards/arm/rpi_pico
+  board_dir: C:/Users/ediso/zephyrproject/zephyr/boards/arm/rpi_pico
   # Build outputs:
   elf_file: zephyr.elf
   hex_file: zephyr.hex
   bin_file: zephyr.bin
   uf2_file: zephyr.uf2
   # Host tools:
-  gdb: C:/Users/sergi/zephyr-sdk-0.15.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+  gdb: C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+  openocd: C:/VSARM/sdk/pico/openocd/src/openocd.exe
+  openocd_search:
+    - C:/Users/ediso/zephyr-sdk-0.15.0/sysroots/AMD64-pokysdk-linux/usr/share/openocd/scripts
 
 # Runner specific arguments
 args:

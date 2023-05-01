@@ -7,8 +7,8 @@ digraph "Device dependency graph" {
 	65 [label="i2c@40044000\nOrdinal: 65 | Handle: 5\n/soc/i2c@40044000"]
 	38 [label="pwm@40050000\nOrdinal: 38 | Handle: 6\n/soc/pwm@40050000"]
 	66 [label="ssd1306@3c\nOrdinal: 66 | Handle: 7\n/soc/i2c@40044000/ssd1306@3c"]
-	7 -> 52
 	7 -> 38
 	7 -> 8
+	7 -> 52
 	65 -> 66
 }

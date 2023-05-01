@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/sergi/zephyrproject/zephyr
+# Install script for directory: C:/Users/ediso/zephyrproject/zephyr
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,306 +34,306 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/Users/sergi/zephyr-sdk-0.15.2/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
+  set(CMAKE_OBJDUMP "C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/arch/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/arch/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/lib/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/lib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/soc/arm/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/soc/arm/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/boards/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/boards/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/subsys/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/subsys/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/drivers/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/drivers/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/canopennode/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/canopennode/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/chre/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/chre/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/cmsis/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/cmsis/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/fatfs/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/fatfs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/altera/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/altera/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/atmel/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/atmel/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_espressif/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_espressif/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_ethos_u/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_ethos_u/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_gigadevice/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_gigadevice/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_infineon/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_infineon/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/microchip/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/microchip/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_nordic/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_nordic/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nuvoton/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nuvoton/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_nxp/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_nxp/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/openisa/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/openisa/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/quicklogic/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/quicklogic/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_renesas/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_renesas/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_rpi_pico/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_rpi_pico/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/silabs/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/silabs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/st/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/st/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/stm32/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/stm32/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_telink/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_telink/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/ti/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/ti/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_wurthelektronik/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/hal_wurthelektronik/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/xtensa/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/xtensa/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/libmetal/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/libmetal/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/liblc3/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/liblc3/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/littlefs/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/littlefs/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/loramac-node/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/loramac-node/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/lvgl/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/lvgl/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/lz4/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/lz4/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mbedtls/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mbedtls/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mcuboot/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mcuboot/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mipi-sys-t/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/mipi-sys-t/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nanopb/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nanopb/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nrf_hw_models/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/nrf_hw_models/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/open-amp/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/open-amp/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/openthread/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/openthread/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/picolibc/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/picolibc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/segger/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/segger/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/sof/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/sof/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/tflite-micro/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/tflite-micro/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/tinycrypt/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/tinycrypt/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/TraceRecorder/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/TraceRecorder/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/trusted-firmware-m/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/trusted-firmware-m/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/trusted-firmware-a/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/trusted-firmware-a/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/uoscore-uedhoc/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/uoscore-uedhoc/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/zcbor/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/zcbor/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/zscilib/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/zscilib/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/thrift/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/modules/thrift/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/kernel/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/kernel/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/flash/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/flash/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/usage/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/usage/cmake_install.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/sergi/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/reports/cmake_install.cmake")
+  include("C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/zephyr/cmake/reports/cmake_install.cmake")
 endif()
 

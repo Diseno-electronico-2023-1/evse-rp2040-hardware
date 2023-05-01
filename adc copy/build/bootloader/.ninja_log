@@ -1,7 +1,0 @@
-# ninja log v5
-5	344	7037041975682414	CMakeFiles/boot_stage2.dir/C_/Users/ediso/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	d21c7b00043a8048
-354	2237	7037041994428088	boot_stage2	e12a0086a69ad707
-354	2237	7037041994428088	boot_stage2.bin	e12a0086a69ad707
-354	2237	7037041994428088	boot_stage2.S	e12a0086a69ad707
-354	2237	7037041994428088	C:/Users/ediso/zephyrproject/Ejemplo/adc/build/bootloader/boot_stage2.bin	e12a0086a69ad707
-354	2237	7037041994428088	C:/Users/ediso/zephyrproject/Ejemplo/adc/build/bootloader/boot_stage2.S	e12a0086a69ad707
