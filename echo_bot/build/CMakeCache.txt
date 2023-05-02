@@ -51,24 +51,24 @@ CACHED_SNIPPET:STRING=
 CCACHE_FOUND:FILEPATH=CCACHE_FOUND-NOTFOUND
 
 //Path to a program.
-CMAKE_ADDR2LINE:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-addr2line.exe
+CMAKE_ADDR2LINE:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-addr2line.exe
 
 //Path to a program.
-CMAKE_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar.exe
+CMAKE_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-ar.exe
 
 //Path to a program.
-CMAKE_AS:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-as.exe
+CMAKE_AS:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-as.exe
 
 //ASM compiler
-CMAKE_ASM_COMPILER:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
+CMAKE_ASM_COMPILER:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_ASM_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
+CMAKE_ASM_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_ASM_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
+CMAKE_ASM_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
 
 //Flags used by the ASM compiler during all build types.
 CMAKE_ASM_FLAGS:STRING=
@@ -90,15 +90,15 @@ CMAKE_ASM_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 CMAKE_BUILD_TYPE:STRING=
 
 //CXX compiler
-CMAKE_CXX_COMPILER:STRING=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
+CMAKE_CXX_COMPILER:STRING=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
+CMAKE_CXX_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
+CMAKE_CXX_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
 
 //Flags used by the CXX compiler during all build types.
 CMAKE_CXX_FLAGS:STRING=
@@ -116,15 +116,15 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:STRING=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
+CMAKE_C_COMPILER:STRING=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
+CMAKE_C_COMPILER_AR:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ar.exe
 
 //A wrapper around 'ranlib' adding the appropriate '--plugin' option
 // for the GCC compiler
-CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
+CMAKE_C_COMPILER_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc-ranlib.exe
 
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
@@ -167,13 +167,13 @@ CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot/build/CMakeFiles/pkgRedirects
 
 //Path to a program.
-CMAKE_GCOV:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcov.exe
+CMAKE_GCOV:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/aarch64-zephyr-elf/bin/aarch64-zephyr-elf-gcov.exe
 
 //Path to a program.
-CMAKE_GDB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+CMAKE_GDB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
 
 //Path to a program.
-CMAKE_GDB_NO_PY:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
+CMAKE_GDB_NO_PY:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb.exe
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=C:/Program Files (x86)/Zephyr-Kernel
@@ -202,13 +202,13 @@ CMAKE_MODULE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_NM:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm.exe
+CMAKE_NM:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-nm.exe
 
 //Path to a program.
-CMAKE_OBJCOPY:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objcopy.exe
+CMAKE_OBJCOPY:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objcopy.exe
 
 //Path to a program.
-CMAKE_OBJDUMP:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe
+CMAKE_OBJDUMP:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-objdump.exe
 
 //Value Computed by CMake
 CMAKE_PROJECT_DESCRIPTION:STATIC=
@@ -235,10 +235,10 @@ CMAKE_PROJECT_VERSION_PATCH:STATIC=99
 CMAKE_PROJECT_VERSION_TWEAK:STATIC=
 
 //Path to a program.
-CMAKE_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib.exe
+CMAKE_RANLIB:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-ranlib.exe
 
 //Path to a program.
-CMAKE_READELF:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf.exe
+CMAKE_READELF:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-readelf.exe
 
 //Flags used by the linker during the creation of shared libraries
 // during all build types.
@@ -288,7 +288,7 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Path to a program.
-CMAKE_STRIP:FILEPATH=C:/Users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-strip.exe
+CMAKE_STRIP:FILEPATH=C:/Users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/arm-zephyr-eabi-strip.exe
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
@@ -339,6 +339,9 @@ Picolibc_SOURCE_DIR:STATIC=C:/Users/ediso/zephyrproject/modules/lib/picolibc
 //True if toolchain supports newlib
 TOOLCHAIN_HAS_NEWLIB:BOOL=ON
 
+//True if toolchain supports picolibc
+TOOLCHAIN_HAS_PICOLIBC:BOOL=ON
+
 //Zephyr toolchain root
 TOOLCHAIN_ROOT:STRING=C:/Users/ediso/zephyrproject/zephyr
 
@@ -355,7 +358,7 @@ ZEPHYR_GIT_DIR:PATH=C:/Users/ediso/zephyrproject/zephyr/.git/index
 ZEPHYR_GIT_INDEX:PATH=ZEPHYR_GIT_INDEX-NOTFOUND
 
 //Zephyr SDK install directory
-ZEPHYR_SDK_INSTALL_DIR:PATH=C:/Users/ediso/zephyr-sdk-0.15.0
+ZEPHYR_SDK_INSTALL_DIR:PATH=C:/Users/ediso/zephyr-sdk-0.16.0
 
 //Zephyr toolchain variant
 ZEPHYR_TOOLCHAIN_VARIANT:STRING=zephyr
@@ -370,7 +373,7 @@ Zephyr-Kernel_IS_TOP_LEVEL:STATIC=ON
 Zephyr-Kernel_SOURCE_DIR:STATIC=C:/Users/ediso/zephyrproject/evse-rp2040-hardware/echo_bot
 
 //The directory containing a CMake configuration file for Zephyr-sdk.
-Zephyr-sdk_DIR:PATH=C:/Users/ediso/zephyr-sdk-0.15.0/cmake
+Zephyr-sdk_DIR:PATH=C:/Users/ediso/zephyr-sdk-0.16.0/cmake
 
 //The directory containing a CMake configuration file for ZephyrBuildConfiguration.
 ZephyrBuildConfiguration_DIR:PATH=ZephyrBuildConfiguration_DIR-NOTFOUND
@@ -551,7 +554,7 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Dtc
 FIND_PACKAGE_MESSAGE_DETAILS_Dtc:INTERNAL=[C:/ProgramData/chocolatey/bin/dtc.exe][v1.5.0(1.4.6)]
 //Details about finding GnuLd
-FIND_PACKAGE_MESSAGE_DETAILS_GnuLd:INTERNAL=[c:/users/ediso/zephyr-sdk-0.15.0/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.1.0/../../../../arm-zephyr-eabi/bin/ld.bfd.exe][v2.38()]
+FIND_PACKAGE_MESSAGE_DETAILS_GnuLd:INTERNAL=[c:/users/ediso/zephyr-sdk-0.16.0/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/12.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd.exe][v2.38()]
 //Details about finding Python3
 FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[C:/Users/ediso/AppData/Local/Programs/Python/Python311/python.exe][cfound components: Interpreter ][v3.11.2(3.11)]
 //West
@@ -569,6 +572,6 @@ _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;11;2;64;;cp311-win_amd64.pyd;;
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=cd7cf6a438f9dee77973db185b4a9aab
 //NumPy reason failure
 _Python3_NumPy_REASON_FAILURE:INTERNAL=
-//Test check_fmacro_prefix_map_C__Users_ediso_zephyrproject_evse_rp2040_hardware_echo_bot_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_ediso_zephyr_sdk_0_15_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_1_0_include___isystem__c__users_ediso_zephyr_sdk_0_15_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_1_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0
-check_fmacro_prefix_map_C__Users_ediso_zephyrproject_evse_rp2040_hardware_echo_bot_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_ediso_zephyr_sdk_0_15_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_1_0_include___isystem__c__users_ediso_zephyr_sdk_0_15_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_1_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0:INTERNAL=1
+//Test check_fmacro_prefix_map_C__Users_ediso_zephyrproject_evse_rp2040_hardware_echo_bot_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_ediso_zephyr_sdk_0_16_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem__c__users_ediso_zephyr_sdk_0_16_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0
+check_fmacro_prefix_map_C__Users_ediso_zephyrproject_evse_rp2040_hardware_echo_bot_CMAKE_SOURCE_DIR_C__nostartfiles__nostdlib__isystem__c__users_ediso_zephyr_sdk_0_16_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include___isystem__c__users_ediso_zephyr_sdk_0_16_0_arm_zephyr_eabi_bin____lib_gcc_arm_zephyr_eabi_12_2_0_include_fixed___Wl___unresolved_symbols_ignore_in_object_files__Wl___entry_0:INTERNAL=1
 
