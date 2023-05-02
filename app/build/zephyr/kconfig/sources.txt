@@ -1,4 +1,4 @@
-C:\Users\ediso\zephyr-sdk-0.15.0\cmake\zephyr\Kconfig
+C:\Users\ediso\zephyr-sdk-0.16.0\cmake\zephyr\Kconfig
 C:\Users\ediso\zephyrproject\evse-rp2040-hardware\app\build\Kconfig\Kconfig.dts
 C:\Users\ediso\zephyrproject\evse-rp2040-hardware\app\build\Kconfig\Kconfig.modules
 C:\Users\ediso\zephyrproject\modules\audio\sof\Kconfig.sof

@@ -548,15 +548,15 @@ zephyr_udc0: &usbd {
   compatible = "pwm-leds";
   status = "disabled";
   pwm_led1: pwm_led_1 {
-   pwms = <&pwm 7 (((20) * 1000UL) * 1000UL) (0 << 0)>;
+   pwms = <&pwm 14 (((20) * 1000UL) * 1000UL) (0 << 0)>;
    label = "PWM_LED";
   };
   pwm_led2: pwm_led_2 {
-   pwms = <&pwm 7 (((20) * 1000UL) * 1000UL) (0 << 0)>;
+   pwms = <&pwm 15 (((20) * 1000UL) * 1000UL) (0 << 0)>;
    label = "PWM_LED";
   };
   pwm_led3: pwm_led_3 {
-   pwms = <&pwm 7 (((20) * 1000UL) * 1000UL) (0 << 0)>;
+   pwms = <&pwm 22 (((20) * 1000UL) * 1000UL) (0 << 0)>;
    label = "PWM_LED";
    status = "okay";
   };
@@ -642,29 +642,7 @@ zephyr_udc0: &usbd {
  divider-frac-7 = <15>;
  divider-int-7 = <255>;
 };
-
-&i2c0 {
- clock-frequency = <100000>;
- status = "okay";
- pinctrl-0 = <&i2c0_default>;
- pinctrl-names = "default";
-
- ssd1306: ssd1306@3c {
-              compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        height = <64>;
-        width = <128>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <63>;
-        prechargep = <0x22>;
-        com-invdir;
-        segment-remap;
-      };
-};
-
-
+# 138 "C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/boards/rpi_pico.overlay"
 &uart0 {
  current-speed = <115200>;
  status = "okay";

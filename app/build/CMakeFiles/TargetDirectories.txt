@@ -141,15 +141,9 @@ C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/adc/C
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/drivers__console.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/edit_cache.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/console/CMakeFiles/rebuild_cache.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/display/CMakeFiles/drivers__display.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/display/CMakeFiles/edit_cache.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/display/CMakeFiles/rebuild_cache.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/gpio/CMakeFiles/drivers__gpio.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/gpio/CMakeFiles/edit_cache.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/gpio/CMakeFiles/rebuild_cache.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/i2c/CMakeFiles/drivers__i2c.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/i2c/CMakeFiles/edit_cache.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/i2c/CMakeFiles/rebuild_cache.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/drivers__pinctrl.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/edit_cache.dir
 C:/Users/ediso/zephyrproject/evse-rp2040-hardware/app/build/zephyr/drivers/pinctrl/CMakeFiles/rebuild_cache.dir

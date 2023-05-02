@@ -193,19 +193,6 @@
 			clock-frequency = < 0x186a0 >;
 			pinctrl-0 = < &i2c0_default >;
 			pinctrl-names = "default";
-			ssd1306: ssd1306@3c {
-				compatible = "solomon,ssd1306fb";
-				reg = < 0x3c >;
-				height = < 0x40 >;
-				width = < 0x80 >;
-				segment-offset = < 0x0 >;
-				page-offset = < 0x0 >;
-				display-offset = < 0x0 >;
-				multiplex-ratio = < 0x3f >;
-				prechargep = < 0x22 >;
-				com-invdir;
-				segment-remap;
-			};
 		};
 		i2c1: i2c@40048000 {
 			compatible = "snps,designware-i2c";
@@ -376,17 +363,17 @@
 			status = "okay";
 		};
 		pwm_led1: pwm_led_1 {
-			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			pwms = < &pwm 0xe 0x1312d00 0x0 >;
 			label = "PWM_LED";
 			status = "okay";
 		};
 		pwm_led2: pwm_led_2 {
-			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			pwms = < &pwm 0xf 0x1312d00 0x0 >;
 			label = "PWM_LED";
 			status = "okay";
 		};
 		pwm_led3: pwm_led_3 {
-			pwms = < &pwm 0x7 0x1312d00 0x0 >;
+			pwms = < &pwm 0x16 0x1312d00 0x0 >;
 			label = "PWM_LED";
 			status = "okay";
 		};

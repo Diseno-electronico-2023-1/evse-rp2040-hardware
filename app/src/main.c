@@ -15,7 +15,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/device.h>
+
 #include <zephyr/drivers/pwm.h>
 
 #include <zephyr/drivers/gpio.h>
@@ -23,11 +23,9 @@
 #include <zephyr/drivers/uart.h>
 #include <string.h>
 
-#include <stdint.h>
 #include <zephyr/drivers/display.h>
 #include <zephyr/logging/log.h>
 
-#include <inttypes.h>
 
 
 /* 1000 msec = 1 sec */
@@ -46,26 +44,26 @@
 
 // ############# ADC ###############
 
-#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+	#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
 	ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
 
 // ############# UART ###############
 
-#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
-#define MSG_SIZE 32
-K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
+	#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
+	#define MSG_SIZE 32
+	K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
 
 // ############# I2C DISPLAY ###############
-#include "logo_image.h"
-#define DISPLAY_BUFFER_PITCH 128
-LOG_MODULE_REGISTER(display);
+// #include "logo_image.h"
+// #define DISPLAY_BUFFER_PITCH 128
+// LOG_MODULE_REGISTER(display);
 
 // ############# BOTONES ###############
-#define SW0_NODE	DT_ALIAS(sw0)
-#define SW1_NODE	DT_ALIAS(sw1)
-#define SW2_NODE	DT_ALIAS(sw2)
-#define SW3_NODE	DT_ALIAS(sw3)
-#define SW4_NODE	DT_ALIAS(sw4)
+// #define SW0_NODE	DT_ALIAS(sw0)
+// #define SW1_NODE	DT_ALIAS(sw1)
+// #define SW2_NODE	DT_ALIAS(sw2)
+// #define SW3_NODE	DT_ALIAS(sw3)
+// #define SW4_NODE	DT_ALIAS(sw4)
 
 
 // ############# GPIO ###############
@@ -120,10 +118,9 @@ void serial_cb(const struct device *dev, void *user_data)
 	}
 }
 
-// ############# I2C DISPLAY ###############
-static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
-
-
+/*
+ * Print a null-terminated string character by character to the UART interface
+ */
 void print_uart(char *buf)
 {
 	int msg_len = strlen(buf);
@@ -133,32 +130,45 @@ void print_uart(char *buf)
 	}
 }
 
+// ############# I2C DISPLAY ###############
+// static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
+
+
+// void print_uart(char *buf)
+// {
+// 	int msg_len = strlen(buf);
+
+// 	for (int i = 0; i < msg_len; i++) {
+// 		uart_poll_out(uart_dev, buf[i]);
+// 	}
+// }
+
 // ############# BOTONES ###############
-static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button4 = GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,
-							      {0});
+// static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button4 = GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,
+// 							      {0});
 
-static struct gpio_callback button_cb_data;
+// static struct gpio_callback button_cb_data;
 
-/*
- * The led0 devicetree alias is optional. If present, we'll use it
- * to turn on the LED whenever the button is pressed.
- */
-static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios,
-						     {0});
+// /*
+//  * The led0 devicetree alias is optional. If present, we'll use it
+//  * to turn on the LED whenever the button is pressed.
+//  */
+// static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios,
+// 						     {0});
 
-void button_pressed(const struct device *dev, struct gpio_callback *cb,
-		    uint32_t pins)
-{
-	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
-}
+// void button_pressed(const struct device *dev, struct gpio_callback *cb,
+// 		    uint32_t pins)
+// {
+// 	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
+// }
 
 
 void main(void)
@@ -267,47 +277,47 @@ void main(void)
 	print_uart("Hello! I'm your echo bot.\r\n");
 	print_uart("Tell me something and press enter:\r\n");
 
-	// ############# I2C DISPLAY ###############
-	if (display == NULL) {
-    LOG_ERR("device pointer is NULL");
-    return;
-	}
+	// // ############# I2C DISPLAY ###############
+	// if (display == NULL) {
+    // LOG_ERR("device pointer is NULL");
+    // return;
+	// }
 
-	if (!device_is_ready(display)) {
-		LOG_ERR("display device is not ready");
-		return;
-	}
+	// if (!device_is_ready(display)) {
+	// 	LOG_ERR("display device is not ready");
+	// 	return;
+	// }
 
-	struct display_capabilities capabilities;
-	display_get_capabilities(display, &capabilities);
+	// struct display_capabilities capabilities;
+	// display_get_capabilities(display, &capabilities);
 
-	const uint16_t x_res = capabilities.x_resolution;
-	const uint16_t y_res = capabilities.y_resolution;
+	// const uint16_t x_res = capabilities.x_resolution;
+	// const uint16_t y_res = capabilities.y_resolution;
 
-	LOG_INF("x_resolution: %d", x_res);
-	LOG_INF("y_resolution: %d", y_res);
-	LOG_INF("supported pixel formats: %d", capabilities.supported_pixel_formats);
-	LOG_INF("screen_info: %d", capabilities.screen_info);
-	LOG_INF("current_pixel_format: %d", capabilities.current_pixel_format);
-	LOG_INF("current_orientation: %d", capabilities.current_orientation);
+	// LOG_INF("x_resolution: %d", x_res);
+	// LOG_INF("y_resolution: %d", y_res);
+	// LOG_INF("supported pixel formats: %d", capabilities.supported_pixel_formats);
+	// LOG_INF("screen_info: %d", capabilities.screen_info);
+	// LOG_INF("current_pixel_format: %d", capabilities.current_pixel_format);
+	// LOG_INF("current_orientation: %d", capabilities.current_orientation);
 		
-	const struct display_buffer_descriptor buf_desc = {
-		.width = x_res,
-		.height = y_res,
-		.buf_size = x_res * y_res,
-		.pitch = DISPLAY_BUFFER_PITCH
-	};
+	// const struct display_buffer_descriptor buf_desc = {
+	// 	.width = x_res,
+	// 	.height = y_res,
+	// 	.buf_size = x_res * y_res,
+	// 	.pitch = DISPLAY_BUFFER_PITCH
+	// };
 
-	if (display_write(display, 0, 0, &buf_desc, buf) != 0) {
-		LOG_ERR("could not write to display");
-	}
+	// if (display_write(display, 0, 0, &buf_desc, buf) != 0) {
+	// 	LOG_ERR("could not write to display");
+	// }
 
-	if (display_set_contrast(display, 0) != 0) {
-		LOG_ERR("could not set display contrast");
-	}
-	size_t ms_sleep = 5;
+	// if (display_set_contrast(display, 0) != 0) {
+	// 	LOG_ERR("could not set display contrast");
+	// }
+	// size_t ms_sleep = 5;
 
-	printk("I2C display configurado correctamente\n");
+	// printk("I2C display configurado correctamente\n");
 
 
 	// ############# BOTONES ###############
@@ -327,5 +337,13 @@ void main(void)
 			return;
 		}
 		k_msleep(SLEEP_TIME_MS);
+
+		if (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0) {
+			print_uart("Echo: ");
+			print_uart(tx_buf);
+			print_uart("\r\n");
+		}
+		
 	}
+	return 0;
 }
