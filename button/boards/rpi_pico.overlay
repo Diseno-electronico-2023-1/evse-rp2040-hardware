@@ -13,7 +13,7 @@ pwm_leds {
 	leds {
 		compatible = "gpio-leds";
 		led2: led_2 {
-			gpios = <&gpio0 10 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio0 25 GPIO_ACTIVE_HIGH>;
 			label = "LED";
 		};
 	};

@@ -1445,6 +1445,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_buttons_S_button_1_EXISTS 1
+#define DT_N_ALIAS_sw1         DT_N_S_buttons_S_button_1
 #define DT_N_NODELABEL_button1 DT_N_S_buttons_S_button_1
 
 /* Macros for properties that are special in the specification: */
@@ -1566,6 +1567,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_buttons_S_button_2_EXISTS 1
+#define DT_N_ALIAS_sw2         DT_N_S_buttons_S_button_2
 #define DT_N_NODELABEL_button2 DT_N_S_buttons_S_button_2
 
 /* Macros for properties that are special in the specification: */
@@ -1687,6 +1689,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_buttons_S_button_3_EXISTS 1
+#define DT_N_ALIAS_sw3         DT_N_S_buttons_S_button_3
 #define DT_N_NODELABEL_button3 DT_N_S_buttons_S_button_3
 
 /* Macros for properties that are special in the specification: */
@@ -1808,6 +1811,7 @@
 
 /* Existence and alternate IDs: */
 #define DT_N_S_buttons_S_button_4_EXISTS 1
+#define DT_N_ALIAS_sw4         DT_N_S_buttons_S_button_4
 #define DT_N_NODELABEL_button4 DT_N_S_buttons_S_button_4
 
 /* Macros for properties that are special in the specification: */
@@ -2347,7 +2351,7 @@
 /* Generic property macros: */
 #define DT_N_S_leds_S_led_2_P_gpios_IDX_0_EXISTS 1
 #define DT_N_S_leds_S_led_2_P_gpios_IDX_0_PH DT_N_S_soc_S_gpio_40014000
-#define DT_N_S_leds_S_led_2_P_gpios_IDX_0_VAL_pin 10
+#define DT_N_S_leds_S_led_2_P_gpios_IDX_0_VAL_pin 25
 #define DT_N_S_leds_S_led_2_P_gpios_IDX_0_VAL_pin_EXISTS 1
 #define DT_N_S_leds_S_led_2_P_gpios_IDX_0_VAL_flags 0
 #define DT_N_S_leds_S_led_2_P_gpios_IDX_0_VAL_flags_EXISTS 1

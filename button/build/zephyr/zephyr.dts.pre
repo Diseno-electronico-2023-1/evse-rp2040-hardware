@@ -550,7 +550,7 @@ pwm_leds {
  leds {
   compatible = "gpio-leds";
   led2: led_2 {
-   gpios = <&gpio0 10 (0 << 0)>;
+   gpios = <&gpio0 25 (0 << 0)>;
    label = "LED";
   };
  };
@@ -583,6 +583,10 @@ pwm_leds {
  aliases {
   pwm-led1 = &pwm_led1;
   sw0 = &button0;
+  sw1 = &button1;
+  sw2 = &button2;
+  sw3 = &button3;
+  sw4 = &button4;
   led2 = &led2;
  };
 };

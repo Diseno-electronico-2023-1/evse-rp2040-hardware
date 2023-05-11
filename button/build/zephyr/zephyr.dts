@@ -18,6 +18,10 @@
 		pwm-led0 = &pwm_led0;
 		pwm-led1 = &pwm_led1;
 		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &button2;
+		sw3 = &button3;
+		sw4 = &button4;
 		led2 = &led2;
 	};
 	soc {
@@ -317,7 +321,7 @@
 			label = "LED";
 		};
 		led2: led_2 {
-			gpios = < &gpio0 0xa 0x0 >;
+			gpios = < &gpio0 0x19 0x0 >;
 			label = "LED";
 		};
 	};
