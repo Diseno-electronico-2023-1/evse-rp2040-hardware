@@ -18,18 +18,38 @@ pwm_leds {
 		};
 	};
 
-	 buttons {
+	buttons {
              compatible = "gpio-keys";
              button0: button_0 {
                      gpios = < &gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
                      label = "User button";
              };
-             /* ... other buttons ... */
+			  button1: button_1 {
+                     gpios = < &gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button2: button_2 {
+                     gpios = < &gpio0 8 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button3: button_3 {
+                     gpios = < &gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button4: button_4 {
+                     gpios = < &gpio0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+             
      };
 
 	aliases {
 		pwm-led1 = &pwm_led1;
 		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &button2;
+		sw3 = &button3;
+		sw4 = &button4;
 		led2 = &led2;
 	};
 };

@@ -59,11 +59,11 @@
 // LOG_MODULE_REGISTER(display);
 
 // ############# BOTONES ###############
-// #define SW0_NODE	DT_ALIAS(sw0)
-// #define SW1_NODE	DT_ALIAS(sw1)
-// #define SW2_NODE	DT_ALIAS(sw2)
-// #define SW3_NODE	DT_ALIAS(sw3)
-// #define SW4_NODE	DT_ALIAS(sw4)
+#define SW0_NODE	DT_ALIAS(sw0)
+#define SW1_NODE	DT_ALIAS(sw1)
+#define SW2_NODE	DT_ALIAS(sw2)
+#define SW3_NODE	DT_ALIAS(sw3)
+#define SW4_NODE	DT_ALIAS(sw4)
 
 
 // ############# GPIO ###############
@@ -87,6 +87,7 @@ static const struct adc_dt_spec adc_channels[] = {
 static const struct device *const uart_dev = DEVICE_DT_GET(UART_DEVICE_NODE);
 static char rx_buf[MSG_SIZE];
 static int rx_buf_pos;
+
 
 void serial_cb(const struct device *dev, void *user_data)
 {

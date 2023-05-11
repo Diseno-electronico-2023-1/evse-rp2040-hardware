@@ -18,11 +18,29 @@
  * Get button configuration from the devicetree sw0 alias. This is mandatory.
  */
 #define SW0_NODE	DT_ALIAS(sw0)
+#define SW1_NODE	DT_ALIAS(sw1)
+#define SW2_NODE	DT_ALIAS(sw2)
+#define SW3_NODE	DT_ALIAS(sw3)
+#define SW4_NODE	DT_ALIAS(sw4)
+
 #if !DT_NODE_HAS_STATUS(SW0_NODE, okay)
-#error "Unsupported board: sw0 devicetree alias is not defined"
+#if !DT_NODE_HAS_STATUS(SW1_NODE, okay)
+#if !DT_NODE_HAS_STATUS(SW2_NODE, okay)
+#if !DT_NODE_HAS_STATUS(SW3_NODE, okay)
+#if !DT_NODE_HAS_STATUS(SW4_NODE, okay)
+
+#error "Unsupported board: sw devicetree alias is not defined"
 #endif
-static const struct gpio_dt_spec button = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
+static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
 							      {0});
+static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
+							      {0});
+static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
+							      {0});
+static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+							      {0});
+static const struct gpio_dt_spec button4 = GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,
+							      {0});								  								  								  
 static struct gpio_callback button_cb_data;
 
 /*
@@ -35,7 +53,7 @@ static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios,
 void button_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
-	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
+	printk("Button0 pressed at %" PRIu32 "\n", k_cycle_get_32());
 }
 
 void main(void)
