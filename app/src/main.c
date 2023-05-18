@@ -5,6 +5,7 @@
  */
 
 
+
 #include <inttypes.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -15,7 +16,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/util.h>
-#include <zephyr/device.h>
+
 #include <zephyr/drivers/pwm.h>
 
 #include <zephyr/drivers/gpio.h>
@@ -23,11 +24,9 @@
 #include <zephyr/drivers/uart.h>
 #include <string.h>
 
-#include <stdint.h>
 #include <zephyr/drivers/display.h>
 #include <zephyr/logging/log.h>
 
-#include <inttypes.h>
 
 
 /* 1000 msec = 1 sec */
@@ -46,19 +45,19 @@
 
 // ############# ADC ###############
 
-#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+	#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
 	ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
 
 // ############# UART ###############
 
-#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
-#define MSG_SIZE 32
-K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
+	#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
+	#define MSG_SIZE 32
+	K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
 
 // ############# I2C DISPLAY ###############
-#include "logo_image.h"
-#define DISPLAY_BUFFER_PITCH 128
-LOG_MODULE_REGISTER(display);
+// #include "logo_image.h"
+// #define DISPLAY_BUFFER_PITCH 128
+// LOG_MODULE_REGISTER(display);
 
 // ############# BOTONES ###############
 #define SW0_NODE	DT_ALIAS(sw0)
@@ -90,6 +89,7 @@ static const struct device *const uart_dev = DEVICE_DT_GET(UART_DEVICE_NODE);
 static char rx_buf[MSG_SIZE];
 static int rx_buf_pos;
 
+
 void serial_cb(const struct device *dev, void *user_data)
 {
 	uint8_t c;
@@ -120,10 +120,9 @@ void serial_cb(const struct device *dev, void *user_data)
 	}
 }
 
-// ############# I2C DISPLAY ###############
-static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
-
-
+/*
+ * Print a null-terminated string character by character to the UART interface
+ */
 void print_uart(char *buf)
 {
 	int msg_len = strlen(buf);
@@ -133,32 +132,48 @@ void print_uart(char *buf)
 	}
 }
 
+// ############# I2C DISPLAY ###############
+// static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
+
+
+// void print_uart(char *buf)
+// {
+// 	int msg_len = strlen(buf);
+
+// 	for (int i = 0; i < msg_len; i++) {
+// 		uart_poll_out(uart_dev, buf[i]);
+// 	}
+// }
+
 // ############# BOTONES ###############
-static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
-							      {0});
-static const struct gpio_dt_spec button4 = GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,
-							      {0});
+// static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+// 							      {0});
+// static const struct gpio_dt_spec button4 = GPIO_DT_SPEC_GET_OR(SW4_NODE, gpios,
+// 							      {0});
 
-static struct gpio_callback button_cb_data;
+// static struct gpio_callback button_cb_data;
 
-/*
- * The led0 devicetree alias is optional. If present, we'll use it
- * to turn on the LED whenever the button is pressed.
- */
-static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios,
-						     {0});
+// /*
+//  * The led0 devicetree alias is optional. If present, we'll use it
+//  * to turn on the LED whenever the button is pressed.
+//  */
+// static struct gpio_dt_spec led = GPIO_DT_SPEC_GET_OR(DT_ALIAS(led2), gpios,
+// 						     {0});
 
-void button_pressed(const struct device *dev, struct gpio_callback *cb,
-		    uint32_t pins)
-{
-	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
-}
+// void button_pressed(const struct device *dev, struct gpio_callback *cb,
+// 		    uint32_t pins)
+// {
+// 	printk("Button pressed at %" PRIu32 "\n", k_cycle_get_32());
+// }
+
+
+
 
 
 void main(void)
@@ -267,47 +282,47 @@ void main(void)
 	print_uart("Hello! I'm your echo bot.\r\n");
 	print_uart("Tell me something and press enter:\r\n");
 
-	// ############# I2C DISPLAY ###############
-	if (display == NULL) {
-    LOG_ERR("device pointer is NULL");
-    return;
-	}
+	// // ############# I2C DISPLAY ###############
+	// if (display == NULL) {
+    // LOG_ERR("device pointer is NULL");
+    // return;
+	// }
 
-	if (!device_is_ready(display)) {
-		LOG_ERR("display device is not ready");
-		return;
-	}
+	// if (!device_is_ready(display)) {
+	// 	LOG_ERR("display device is not ready");
+	// 	return;
+	// }
 
-	struct display_capabilities capabilities;
-	display_get_capabilities(display, &capabilities);
+	// struct display_capabilities capabilities;
+	// display_get_capabilities(display, &capabilities);
 
-	const uint16_t x_res = capabilities.x_resolution;
-	const uint16_t y_res = capabilities.y_resolution;
+	// const uint16_t x_res = capabilities.x_resolution;
+	// const uint16_t y_res = capabilities.y_resolution;
 
-	LOG_INF("x_resolution: %d", x_res);
-	LOG_INF("y_resolution: %d", y_res);
-	LOG_INF("supported pixel formats: %d", capabilities.supported_pixel_formats);
-	LOG_INF("screen_info: %d", capabilities.screen_info);
-	LOG_INF("current_pixel_format: %d", capabilities.current_pixel_format);
-	LOG_INF("current_orientation: %d", capabilities.current_orientation);
+	// LOG_INF("x_resolution: %d", x_res);
+	// LOG_INF("y_resolution: %d", y_res);
+	// LOG_INF("supported pixel formats: %d", capabilities.supported_pixel_formats);
+	// LOG_INF("screen_info: %d", capabilities.screen_info);
+	// LOG_INF("current_pixel_format: %d", capabilities.current_pixel_format);
+	// LOG_INF("current_orientation: %d", capabilities.current_orientation);
 		
-	const struct display_buffer_descriptor buf_desc = {
-		.width = x_res,
-		.height = y_res,
-		.buf_size = x_res * y_res,
-		.pitch = DISPLAY_BUFFER_PITCH
-	};
+	// const struct display_buffer_descriptor buf_desc = {
+	// 	.width = x_res,
+	// 	.height = y_res,
+	// 	.buf_size = x_res * y_res,
+	// 	.pitch = DISPLAY_BUFFER_PITCH
+	// };
 
-	if (display_write(display, 0, 0, &buf_desc, buf) != 0) {
-		LOG_ERR("could not write to display");
-	}
+	// if (display_write(display, 0, 0, &buf_desc, buf) != 0) {
+	// 	LOG_ERR("could not write to display");
+	// }
 
-	if (display_set_contrast(display, 0) != 0) {
-		LOG_ERR("could not set display contrast");
-	}
-	size_t ms_sleep = 5;
+	// if (display_set_contrast(display, 0) != 0) {
+	// 	LOG_ERR("could not set display contrast");
+	// }
+	// size_t ms_sleep = 5;
 
-	printk("I2C display configurado correctamente\n");
+	// printk("I2C display configurado correctamente\n");
 
 
 	// ############# BOTONES ###############
@@ -319,13 +334,67 @@ void main(void)
 
 
 
-	// ############# INICIO DEL WHILE ###############
+	// ############# INICIO DEL PROGRAMA ###############
+
+	//RELÉS OFF
+	//REVISIÓN DE FALLAS:
+		//LECTURA DE CORRIENTE DE ENTRADA
+		//LECTURA DE VOLTAJE DE ENTRADA
+		//LECTURA DE TEMPERATURA
+		//LECTURA GFCI
+	//EN CASO DE FALLA:
+		//MOSTRAR PANTALLA DE FALLA POR 5 SEGUNDOS
+		//TERMINAR PROGRAMA
+	//MOSTRAR PANTALLA DE INICIO POR 2 SEGUNDOS
+	//REVISAR SI SE APAGÓ CORRECTAMENTE
+	//SI SE APAGÓ CORRECTAMENTE:
+		//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE
+		//EL USUARIO SELECCIONA LA CORRIENTE
+		//CONFIRMACIÓN POR EL USUARIO DE LA CORRIENTE SELECCIONADA
+		//SE MUESTRA PANTALLA DE SOLICITUD DE CONEXIÓN DEL CARRO
+		//vERIFICACIÓN DE CONEXIÓN CON EL CARRO
+	//SI NO SE APAGÓ CORRECTAMENTE:
+		//VERIFICACIÓN DE CONEXIÓN CON EL CARRO
+		//SI NO ESTÁ CONECTADO, SE REINICIA EL PROGRAMA CON EL REGISTRO DE APAGADO CORRECTAMENTE EN 1
+//RELÉS ENCENDIDOS
+//REGISTRO, APAGADO CORRECTAMENTE (0)
+// INICIO DE WHILE
 
 	while (1) {
+	
+	//LECTURA DE CORRIENTE DE ENTRADA
+	//LECTURA DE VOLTAJE DE ENTRADA
+	//LECTURA DE TEMPERATURA
+	//LECTURA DE CONEXIÓN CON EL CARRO
+	//LECTURA GFCI
+	//ESTADO DE CARGA
+		//SI NO ESTÁ LLENA:
+			//MOSTRAR PANTALLA CARGANDO
+		//SI ESTÁ LLENA:
+			//MOSTRAR PANTALLA CARGADO
+			//APAGA RELÉS
+			//REGISTRO, APAGADO CORRECTAMENTE (1)
+			//FINALIZA PROGRAMA
+	//MOSTRAR EN PANTALLA OPCIÓN DE CANCELAR CARGA
+	//SI SE CANCELA CARGA:
+		//REGISTRO APAGADO CORRECTAMENTE (1)
+	//FALLO (CORRIENTE, TENSIÓN, TEMPERATURA, GFCI,)
+		//ABRE RELÉS
+		//MUESTRA PANTALLA DE ERROR POR 5 SEGUNDOS
+		//FINALIZA PROGRAMA
+
 		ret = gpio_pin_toggle_dt(&led_placa);
 		if (ret < 0) {
 			return;
 		}
 		k_msleep(SLEEP_TIME_MS);
+
+		if (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0) {
+			print_uart("Echo: ");
+			print_uart(tx_buf);
+			print_uart("\r\n");
+		}
+		
 	}
+	return 0;
 }

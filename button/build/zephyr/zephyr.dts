@@ -18,6 +18,10 @@
 		pwm-led0 = &pwm_led0;
 		pwm-led1 = &pwm_led1;
 		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &button2;
+		sw3 = &button3;
+		sw4 = &button4;
 		led2 = &led2;
 	};
 	soc {
@@ -214,6 +218,17 @@
 			divider-int-4 = < 0xff >;
 			phandle = < 0xd >;
 		};
+		dma: dma@50000000 {
+			compatible = "raspberrypi,pico-dma";
+			reg = < 0x50000000 0x10000 >;
+			resets = < &reset 0x2 >;
+			clocks = < &system_clk >;
+			interrupts = < 0xb 0x3 >, < 0xc 0x3 >;
+			interrupt-names = "dma0", "dma1";
+			dma-channels = < 0xc >;
+			status = "disabled";
+			#dma-cells = < 0x3 >;
+		};
 		vreg: vreg@40064000 {
 			compatible = "raspberrypi,core-supply-regulator";
 			reg = < 0x40064000 0x1 >;
@@ -222,6 +237,20 @@
 			raspberrypi,brown-out-threshold = < 0xd1f60 >;
 			regulator-always-on;
 			regulator-allowed-modes = < 0x0 >;
+		};
+		pio0: pio@50200000 {
+			compatible = "raspberrypi,pico-pio";
+			reg = < 0x50200000 0x1000 >;
+			clocks = < &system_clk >;
+			resets = < &reset 0xa >;
+			status = "disabled";
+		};
+		pio1: pio@50300000 {
+			compatible = "raspberrypi,pico-pio";
+			reg = < 0x50300000 0x1000 >;
+			clocks = < &system_clk >;
+			resets = < &reset 0xb >;
+			status = "disabled";
 		};
 	};
 	cpus {
@@ -292,7 +321,7 @@
 			label = "LED";
 		};
 		led2: led_2 {
-			gpios = < &gpio0 0xa 0x0 >;
+			gpios = < &gpio0 0x19 0x0 >;
 			label = "LED";
 		};
 	};
@@ -319,6 +348,22 @@
 		compatible = "gpio-keys";
 		button0: button_0 {
 			gpios = < &gpio0 0x6 0x11 >;
+			label = "User button";
+		};
+		button1: button_1 {
+			gpios = < &gpio0 0x7 0x11 >;
+			label = "User button";
+		};
+		button2: button_2 {
+			gpios = < &gpio0 0x8 0x11 >;
+			label = "User button";
+		};
+		button3: button_3 {
+			gpios = < &gpio0 0x9 0x11 >;
+			label = "User button";
+		};
+		button4: button_4 {
+			gpios = < &gpio0 0xa 0x11 >;
 			label = "User button";
 		};
 	};

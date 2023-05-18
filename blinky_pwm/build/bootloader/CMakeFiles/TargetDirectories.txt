@@ -1,3 +1,0 @@
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/blinky_pwm/build/bootloader/CMakeFiles/boot_stage2.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/blinky_pwm/build/bootloader/CMakeFiles/edit_cache.dir
-C:/Users/ediso/zephyrproject/evse-rp2040-hardware/blinky_pwm/build/bootloader/CMakeFiles/rebuild_cache.dir
