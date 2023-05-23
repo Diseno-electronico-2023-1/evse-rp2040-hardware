@@ -497,7 +497,19 @@ void main(void)
 	// ############# INICIO DEL PROGRAMA ###############
 
 	//RELÉS OFF
+	ret = pwm_set_dt(&pwm_rele1, period, 0);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			print_uart("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
 
+	ret = pwm_set_dt(&pwm_rele2, period, 0);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			print_uart("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
 
 
 	//REVISIÓN DE FALLAS: (SENSORES)
@@ -511,9 +523,33 @@ void main(void)
 	//MOSTRAR PANTALLA DE INICIO POR 2 SEGUNDOS (PANTALLA)
 	//REVISAR SI SE APAGÓ CORRECTAMENTE (MICRO)
 	//SI SE APAGÓ CORRECTAMENTE:
-		//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE (PANTALLA)
-		//EL USUARIO SELECCIONA LA CORRIENTE 
-		//CONFIRMACIÓN POR EL USUARIO DE LA CORRIENTE SELECCIONADA ((PANTALLA))
+		//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
+		int aceptar = gpio_pin_get_dt(&button0);
+		int izquierda = gpio_pin_get_dt(&button1);
+		int derecha = gpio_pin_get_dt(&button2);
+		int seleccionando_corriente = 1;
+		int corriente_A = 16;
+		int counter=0;
+		while(seleccionando_corriente){
+			if(izquierda){
+				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
+				corriente_A = 8;
+			}
+			if(derecha){
+				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 16A (PANTALLA)
+				corriente_A = 16;
+			}
+			if(aceptar){
+				seleccionando_corriente = 0;
+			}
+			if(counter > 200){
+				seleccionando_corriente = 0;
+			}
+			counter = counter + 1;
+
+			k_sleep(K_MSEC(700U))
+		}
+		
 		//SE MUESTRA PANTALLA DE SOLICITUD DE CONEXIÓN DEL CARRO (PANTALLA)
 		//vERIFICACIÓN DE CONEXIÓN CON EL CARRO %%%%%(CONECTOR)%%%%%%%%%
 	//SI NO SE APAGÓ CORRECTAMENTE:
@@ -534,14 +570,12 @@ void main(void)
 	//ESTADO DE CARGA (CONECTOR)
 		//SI NO ESTÁ LLENA:
 			//MOSTRAR PANTALLA CARGANDO (PANTALLA)
-		//SI ESTÁ LLENA: (CONECTOR)
+		//SI ESTÁ LLENA:
 			//MOSTRAR PANTALLA CARGADO (PANTALLA)
 			//APAGA RELÉS (MICRO)
-			//REGISTRO, APAGADO CORRECTAMENTE (1) (MICRO)
 			//FINALIZA PROGRAMA
 	//MOSTRAR EN PANTALLA OPCIÓN DE CANCELAR CARGA (PANTALLA)
 	//SI SE CANCELA CARGA: 
-		//REGISTRO APAGADO CORRECTAMENTE (1)
 	//FALLO (CORRIENTE, TENSIÓN, TEMPERATURA, GFCI,) (SENSORES)
 		//ABRE RELÉS
 		//MUESTRA PANTALLA DE ERROR POR 5 SEGUNDOS (PANTALLA)
