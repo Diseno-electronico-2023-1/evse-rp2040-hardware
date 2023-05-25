@@ -500,14 +500,12 @@ void main(void)
 	ret = pwm_set_dt(&pwm_rele1, period, 0);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
-			print_uart("Error %d: failed to set pulse width\n", ret);
 			return;
 		}
 
 	ret = pwm_set_dt(&pwm_rele2, period, 0);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
-			print_uart("Error %d: failed to set pulse width\n", ret);
 			return;
 		}
 
@@ -547,17 +545,27 @@ void main(void)
 			}
 			counter = counter + 1;
 
-			k_sleep(K_MSEC(700U))
+			k_sleep(K_MSEC(700U));
 		}
 		
 		//SE MUESTRA PANTALLA DE SOLICITUD DE CONEXIÓN DEL CARRO (PANTALLA)
 		//vERIFICACIÓN DE CONEXIÓN CON EL CARRO %%%%%(CONECTOR)%%%%%%%%%
-	//SI NO SE APAGÓ CORRECTAMENTE:
-		//VERIFICACIÓN DE CONEXIÓN CON EL CARRO (CONECTOR)
 		//SI NO ESTÁ CONECTADO, SE REINICIA EL PROGRAMA CON EL REGISTRO DE APAGADO CORRECTAMENTE EN 1
 	//%%%%%%%% INICIA CARGA %%%%%%%%%
 //RELÉS ENCENDIDOS (PROTOCOLO CONECTOR)
-//REGISTRO, APAGADO CORRECTAMENTE (0)
+	ret = pwm_set_dt(&pwm_rele1, period, period);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
+
+	ret = pwm_set_dt(&pwm_rele2, period, period);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
+
+ bool Carga_Completa = false;
 // INICIO DE WHILE
 
 	while (1) {
@@ -571,8 +579,24 @@ void main(void)
 		//SI NO ESTÁ LLENA:
 			//MOSTRAR PANTALLA CARGANDO (PANTALLA)
 		//SI ESTÁ LLENA:
+
+			if (Carga_Completa == true)
+			{
 			//MOSTRAR PANTALLA CARGADO (PANTALLA)
 			//APAGA RELÉS (MICRO)
+				ret = pwm_set_dt(&pwm_rele1, period, 0);
+				if (ret) {
+				printk("Error %d: failed to set pulse width\n", ret);
+				return;
+				}
+
+			ret = pwm_set_dt(&pwm_rele2, period, 0);
+			if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			return;
+			}
+			}
+			
 			//FINALIZA PROGRAMA
 	//MOSTRAR EN PANTALLA OPCIÓN DE CANCELAR CARGA (PANTALLA)
 	//SI SE CANCELA CARGA: 
