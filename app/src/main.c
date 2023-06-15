@@ -595,11 +595,14 @@ void main(void)
 			printk("Error %d: failed to set pulse width\n", ret);
 			return;
 			}
+			//FINALIZA PROGRAMA
+			return 0;
 			}
 			
-			//FINALIZA PROGRAMA
-	//MOSTRAR EN PANTALLA OPCIÓN DE CANCELAR CARGA (PANTALLA)
+
 	//SI SE CANCELA CARGA: 
+		
+
 	//FALLO (CORRIENTE, TENSIÓN, TEMPERATURA, GFCI,) (SENSORES)
 		//ABRE RELÉS
 		//MUESTRA PANTALLA DE ERROR POR 5 SEGUNDOS (PANTALLA)
