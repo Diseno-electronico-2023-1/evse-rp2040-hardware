@@ -41,7 +41,7 @@
 
 // ############# PWM ###############
 
-#define PERIOD PWM_SEC(1U)
+#define PERIOD PWM_NSEC(100000000U)
 
 // ############# ADC ###############
 
@@ -472,154 +472,155 @@ void main(void)
 		return;
 	}
 
-	gpio_init_callback(&button0_cb_data, button0_pressed, BIT(button0.pin));
-	gpio_add_callback(button0.port, &button0_cb_data);
-	printk("Set up button at %s pin %d\n", button0.port->name, button0.pin);
+	// gpio_init_callback(&button0_cb_data, button0_pressed, BIT(button0.pin));
+	// gpio_add_callback(button0.port, &button0_cb_data);
+	// printk("Set up button at %s pin %d\n", button0.port->name, button0.pin);
 
-	gpio_init_callback(&button1_cb_data, button1_pressed, BIT(button1.pin));
-	gpio_add_callback(button1.port, &button1_cb_data);
-	printk("Set up button1 at %s pin %d\n", button1.port->name, button1.pin);
+	// gpio_init_callback(&button1_cb_data, button1_pressed, BIT(button1.pin));
+	// gpio_add_callback(button1.port, &button1_cb_data);
+	// printk("Set up button1 at %s pin %d\n", button1.port->name, button1.pin);
 
-	gpio_init_callback(&button2_cb_data, button2_pressed, BIT(button2.pin));
-	gpio_add_callback(button2.port, &button2_cb_data);
-	printk("Set up button2 at %s pin %d\n", button2.port->name, button2.pin);
+	// gpio_init_callback(&button2_cb_data, button2_pressed, BIT(button2.pin));
+	// gpio_add_callback(button2.port, &button2_cb_data);
+	// printk("Set up button2 at %s pin %d\n", button2.port->name, button2.pin);
 
-	gpio_init_callback(&button3_cb_data, button3_pressed, BIT(button3.pin));
-	gpio_add_callback(button3.port, &button3_cb_data);
-	printk("Set up button3 at %s pin %d\n", button3.port->name, button3.pin);
+	// gpio_init_callback(&button3_cb_data, button3_pressed, BIT(button3.pin));
+	// gpio_add_callback(button3.port, &button3_cb_data);
+	// printk("Set up button3 at %s pin %d\n", button3.port->name, button3.pin);
 
-	gpio_init_callback(&button4_cb_data, button4_pressed, BIT(button4.pin));
-	gpio_add_callback(button4.port, &button4_cb_data);
-	printk("Set up button4 at %s pin %d\n", button4.port->name, button4.pin);
+	// gpio_init_callback(&button4_cb_data, button4_pressed, BIT(button4.pin));
+	// gpio_add_callback(button4.port, &button4_cb_data);
+	// printk("Set up button4 at %s pin %d\n", button4.port->name, button4.pin);
 
 
 
 	// ############# INICIO DEL PROGRAMA ###############
+	period = PERIOD;
 
 	//RELÉS OFF
-	ret = pwm_set_dt(&pwm_rele1, period, 0);
+	ret = pwm_set_dt(&pwm_rele1, period, period / 2U);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
 			return;
 		}
 
-	ret = pwm_set_dt(&pwm_rele2, period, 0);
+	ret = pwm_set_dt(&pwm_rele2, period, period / 2U);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
 			return;
 		}
-
-
-	//REVISIÓN DE FALLAS: (SENSORES)
-		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
-		//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
-		//LECTURA DE TEMPERATURA (SENSORES)
-		//LECTURA GFCI (SENSORES)
-	//EN CASO DE FALLA: (PANTALLA)
-		//MOSTRAR PANTALLA DE FALLA POR 5 SEGUNDOS
-		//TERMINAR PROGRAMA 
-	//MOSTRAR PANTALLA DE INICIO POR 2 SEGUNDOS (PANTALLA)
-	//REVISAR SI SE APAGÓ CORRECTAMENTE (MICRO)
-	//SI SE APAGÓ CORRECTAMENTE:
-		//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
-		int aceptar = gpio_pin_get_dt(&button0);
-		int izquierda = gpio_pin_get_dt(&button1);
-		int derecha = gpio_pin_get_dt(&button2);
-		int seleccionando_corriente = 1;
-		int corriente_A = 16;
-		int counter=0;
-		while(seleccionando_corriente){
-			if(izquierda){
-				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
-				corriente_A = 8;
-			}
-			if(derecha){
-				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 16A (PANTALLA)
-				corriente_A = 16;
-			}
-			if(aceptar){
-				seleccionando_corriente = 0;
-			}
-			if(counter > 200){
-				seleccionando_corriente = 0;
-			}
-			counter = counter + 1;
-
-			k_sleep(K_MSEC(700U));
-		}
-		
-		//SE MUESTRA PANTALLA DE SOLICITUD DE CONEXIÓN DEL CARRO (PANTALLA)
-		//vERIFICACIÓN DE CONEXIÓN CON EL CARRO %%%%%(CONECTOR)%%%%%%%%%
-		//SI NO ESTÁ CONECTADO, SE REINICIA EL PROGRAMA CON EL REGISTRO DE APAGADO CORRECTAMENTE EN 1
-	//%%%%%%%% INICIA CARGA %%%%%%%%%
-//RELÉS ENCENDIDOS (PROTOCOLO CONECTOR)
-	ret = pwm_set_dt(&pwm_rele1, period, period);
-		if (ret) {
-			printk("Error %d: failed to set pulse width\n", ret);
-			return;
-		}
-
-	ret = pwm_set_dt(&pwm_rele2, period, period);
-		if (ret) {
-			printk("Error %d: failed to set pulse width\n", ret);
-			return;
-		}
-
- bool Carga_Completa = false;
-// INICIO DE WHILE
-
-	while (1) {
 	
-	//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
-	//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
-	//LECTURA DE TEMPERATURA (SENSORES)
-	//LECTURA DE CONEXIÓN CON EL CARRO (CONECTOR)
-	//LECTURA GFCI (SENSORES)
-	//ESTADO DE CARGA (CONECTOR)
-		//SI NO ESTÁ LLENA:
-			//MOSTRAR PANTALLA CARGANDO (PANTALLA)
-		//SI ESTÁ LLENA:
 
-			if (Carga_Completa == true)
-			{
-			//MOSTRAR PANTALLA CARGADO (PANTALLA)
-			//APAGA RELÉS (MICRO)
-				ret = pwm_set_dt(&pwm_rele1, period, 0);
-				if (ret) {
-				printk("Error %d: failed to set pulse width\n", ret);
-				return;
-				}
 
-			ret = pwm_set_dt(&pwm_rele2, period, 0);
-			if (ret) {
-			printk("Error %d: failed to set pulse width\n", ret);
-			return;
-			}
-			//FINALIZA PROGRAMA
-			return 0;
-			}
+// 	//REVISIÓN DE FALLAS: (SENSORES)
+// 		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
+// 		//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
+// 		//LECTURA DE TEMPERATURA (SENSORES)
+// 		//LECTURA GFCI (SENSORES)
+// 	//EN CASO DE FALLA: (PANTALLA)
+// 		//MOSTRAR PANTALLA DE FALLA POR 5 SEGUNDOS
+// 		//TERMINAR PROGRAMA 
+// 	//MOSTRAR PANTALLA DE INICIO POR 2 SEGUNDOS (PANTALLA)
+// 	//REVISAR SI SE APAGÓ CORRECTAMENTE (MICRO)
+// 	//SI SE APAGÓ CORRECTAMENTE:
+// 		//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
+// 		int aceptar = gpio_pin_get_dt(&button0);
+// 		int izquierda = gpio_pin_get_dt(&button1);
+// 		int derecha = gpio_pin_get_dt(&button2);
+// 		int seleccionando_corriente = 1;
+// 		int corriente_A = 16;
+// 		int counter=0;
+// 		while(seleccionando_corriente){
+// 			if(izquierda){
+// 				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 8A (PANTALLA)
+// 				corriente_A = 8;
+// 			}
+// 			if(derecha){
+// 				//SE MUESTRA PANTALLA DE SELECCIÓN DE CORRIENTE 16A (PANTALLA)
+// 				corriente_A = 16;
+// 			}
+// 			if(aceptar){
+// 				seleccionando_corriente = 0;
+// 			}
+// 			if(counter > 200){
+// 				seleccionando_corriente = 0;
+// 			}
+// 			counter = counter + 1;
+
+// 			k_sleep(K_MSEC(700U));
+// 		}
+		
+// 		//SE MUESTRA PANTALLA DE SOLICITUD DE CONEXIÓN DEL CARRO (PANTALLA)
+// 		//vERIFICACIÓN DE CONEXIÓN CON EL CARRO %%%%%(CONECTOR)%%%%%%%%%
+// 		//SI NO ESTÁ CONECTADO, SE REINICIA EL PROGRAMA CON EL REGISTRO DE APAGADO CORRECTAMENTE EN 1
+// 	//%%%%%%%% INICIA CARGA %%%%%%%%%
+// //RELÉS ENCENDIDOS (PROTOCOLO CONECTOR)
+// 	ret = pwm_set_dt(&pwm_rele1, period, period);
+// 		if (ret) {
+// 			printk("Error %d: failed to set pulse width\n", ret);
+// 			return;
+// 		}
+
+// 	ret = pwm_set_dt(&pwm_rele2, period, period);
+// 		if (ret) {
+// 			printk("Error %d: failed to set pulse width\n", ret);
+// 			return;
+// 		}
+
+//  bool Carga_Completa = false;
+// // INICIO DE WHILE
+
+// 	while (1) {
+	
+// 	//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
+// 	//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
+// 	//LECTURA DE TEMPERATURA (SENSORES)
+// 	//LECTURA DE CONEXIÓN CON EL CARRO (CONECTOR)
+// 	//LECTURA GFCI (SENSORES)
+// 	//ESTADO DE CARGA (CONECTOR)
+// 		//SI NO ESTÁ LLENA:
+// 			//MOSTRAR PANTALLA CARGANDO (PANTALLA)
+// 		//SI ESTÁ LLENA:
+
+// 			if (Carga_Completa == true)
+// 			{
+// 			//MOSTRAR PANTALLA CARGADO (PANTALLA)
+// 			//APAGA RELÉS (MICRO)
+// 				ret = pwm_set_dt(&pwm_rele1, period, 0);
+// 				if (ret) {
+// 				printk("Error %d: failed to set pulse width\n", ret);
+// 				return;
+// 				}
+
+// 			ret = pwm_set_dt(&pwm_rele2, period, 0);
+// 			if (ret) {
+// 			printk("Error %d: failed to set pulse width\n", ret);
+// 			return;
+// 			}
+// 			//FINALIZA PROGRAMA
+// 			return 0;
+// 			}
 			
 
-	//SI SE CANCELA CARGA: 
+// 	//SI SE CANCELA CARGA: 
 		
 
-	//FALLO (CORRIENTE, TENSIÓN, TEMPERATURA, GFCI,) (SENSORES)
-		//ABRE RELÉS
-		//MUESTRA PANTALLA DE ERROR POR 5 SEGUNDOS (PANTALLA)
-		//FINALIZA PROGRAMA
+// 	//FALLO (CORRIENTE, TENSIÓN, TEMPERATURA, GFCI,) (SENSORES)
+// 		//ABRE RELÉS
+// 		//MUESTRA PANTALLA DE ERROR POR 5 SEGUNDOS (PANTALLA)
+// 		//FINALIZA PROGRAMA
 
-		ret = gpio_pin_toggle_dt(&led_placa);
-		if (ret < 0) {
-			return;
-		}
-		k_msleep(SLEEP_TIME_MS);
+// 		ret = gpio_pin_toggle_dt(&led_placa);
+// 		if (ret < 0) {
+// 			return;
+// 		}
+// 		k_msleep(SLEEP_TIME_MS);
 
-		if (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0) {
-			print_uart("Echo: ");
-			print_uart(tx_buf);
-			print_uart("\r\n");
-		}
+// 		if (k_msgq_get(&uart_msgq, &tx_buf, K_FOREVER) == 0) {
+// 			print_uart("Echo: ");
+// 			print_uart(tx_buf);
+// 			print_uart("\r\n");
+// 		}
 		
-	}
-	return 0;
+// 	}
 }
