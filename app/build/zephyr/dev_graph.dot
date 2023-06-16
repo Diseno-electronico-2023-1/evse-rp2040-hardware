@@ -5,7 +5,7 @@ digraph "Device dependency graph" {
 	12 [label="gpio@40014000\nOrdinal: 12 | Handle: 3\n/soc/gpio@40014000"]
 	8 [label="adc@4004c000\nOrdinal: 8 | Handle: 4\n/soc/adc@4004c000"]
 	38 [label="pwm@40050000\nOrdinal: 38 | Handle: 5\n/soc/pwm@40050000"]
+	7 -> 8
 	7 -> 53
 	7 -> 38
-	7 -> 8
 }
