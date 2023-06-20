@@ -1,0 +1,161 @@
+#include "rpi_pico-pinctrl.dtsi"
+#include <zephyr/dt-bindings/adc/adc.h>
+
+
+/ {
+	zephyr,user {
+		io-channels = <&adc 0>, <&adc 1>;
+	};
+
+	pwm_leds {
+		compatible = "pwm-leds";
+		status = "disabled";
+		pwm_led1: pwm_led_1 {
+			pwms = <&pwm 14 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+		};
+		pwm_led2: pwm_led_2 {
+			pwms = <&pwm 15 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+		};
+		pwm_led3: pwm_led_3 {
+			pwms = <&pwm 6 PWM_MSEC(20) PWM_POLARITY_NORMAL>;
+			label = "PWM_LED";
+		};
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led1: led_1 {
+			gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
+			label = "LED";
+		};
+		led2: led_2 {
+			gpios = <&gpio0 3 GPIO_ACTIVE_HIGH>;
+			label = "LED";
+		};
+	};
+
+	buttons {
+             compatible = "gpio-keys";
+             button0: button_0 {
+                     gpios = < &gpio0 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button1: button_1 {
+                     gpios = < &gpio0 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button2: button_2 {
+                     gpios = < &gpio0 8 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button3: button_3 {
+                     gpios = < &gpio0 9 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+			  button4: button_4 {
+                     gpios = < &gpio0 10 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+                     label = "User button";
+             };
+             
+     };
+
+	aliases {
+		led1 = &led1;
+		led2 = &led2;
+		pwm-led1 = &pwm_led1;
+		pwm-led2 = &pwm_led2;
+		pwm-led3 = &pwm_led3;
+		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &button2;
+		sw3 = &button3;
+		sw4 = &button4;
+	};
+
+};
+
+
+&pwm_led1 {
+	status = "okay";
+};
+&pwm_led2 {
+	status = "okay";
+};
+&pwm_led3 {
+	status = "okay";
+};
+
+
+&pwm {
+	status = "okay";
+
+	pinctrl-0 = <&pwm_ch4b_default>;
+
+	// for pwm chanel 3 A and B
+
+	divider-frac-3 = <15>;
+	divider-int-3 = <255>;
+	
+	// for pwm chanel 4 A and B
+	
+	// divider-frac-4 = <15>;
+	// divider-int-4 = <255>;
+
+	// for pwm chanel 7 A and B
+	
+	divider-frac-7 = <15>;
+	divider-int-7 = <255>;
+};
+
+/* &i2c0 {
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+	status = "okay";
+	pinctrl-0 = <&i2c0_default>;
+	pinctrl-names = "default";
+
+	ssd1306: ssd1306@3c {
+      		compatible = "solomon,ssd1306fb";
+	       reg = <0x3c>;
+	       height = <64>;
+	       width = <128>;
+	       segment-offset = <0>;
+	       page-offset = <0>;
+	       display-offset = <0>;
+	       multiplex-ratio = <63>;
+	       prechargep = <0x22>;
+	       com-invdir;
+	       segment-remap;
+      };
+};
+*/
+
+&uart0 {
+	current-speed = <115200>;
+	status = "okay";
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-names = "default";
+};
+
+&adc {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+	
+	channel@1 {
+		reg = <1>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
+
+};

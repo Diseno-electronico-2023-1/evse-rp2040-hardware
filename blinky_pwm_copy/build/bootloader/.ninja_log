@@ -1,0 +1,7 @@
+# ninja log v5
+8	224	7086315126745343	CMakeFiles/boot_stage2.dir/C_/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	2710e105d1eac4aa
+226	966	7086315134331912	boot_stage2	3558304b920790c7
+226	966	7086315134331912	boot_stage2.bin	3558304b920790c7
+226	966	7086315134331912	boot_stage2.S	3558304b920790c7
+226	966	7086315134331912	C:/Users/sergi/zephyrproject/evse-rp2040-hardware/blinky_pwm_copy/build/bootloader/boot_stage2.bin	3558304b920790c7
+226	966	7086315134331912	C:/Users/sergi/zephyrproject/evse-rp2040-hardware/blinky_pwm_copy/build/bootloader/boot_stage2.S	3558304b920790c7

@@ -7,18 +7,6 @@
 
 &pinctrl {
 
-// new pinctrl:
-
-	pwm_chn_used: pwm_ch4b_default {
-		group1 {
-			pinmux = <PWM_7A_P14>, <PWM_7B_P15>, <PWM_3A_P22>;
-		};
-	};
-
-
-
-// old pinctrl:
-
 	uart0_default: uart0_default {
 		group1 {
 			pinmux = <UART0_TX_P0>;
@@ -49,7 +37,7 @@
 
 	pwm_ch4b_default: pwm_ch4b_default {
 		group1 {
-			pinmux = <PWM_4B_P25>;
+			pinmux = <PWM_7A_P14>, <PWM_7B_P15>, <PWM_3A_P22>;
 		};
 	};
 
