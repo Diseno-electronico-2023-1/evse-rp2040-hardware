@@ -54,10 +54,35 @@ static const struct gpio_dt_spec GFCI_fault = GPIO_DT_SPEC_GET(GFCI_fault_NODE, 
 #error "Unsupported board: sw devicetree alias is not defined"
 #endif
 
+static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+							      {0});
+static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+							      {0});
+static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+							      {0});
 static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
 							      {0});
+
+static struct gpio_callback button0_cb_data;
+static struct gpio_callback button1_cb_data;
+static struct gpio_callback button2_cb_data;
 static struct gpio_callback button3_cb_data;
 
+void button0_pressed(const struct device *dev, struct gpio_callback *cb,
+		    uint32_t pins)
+{
+	printk("Button0 pressed at %" PRIu32 "\n", k_cycle_get_32());
+}
+void button1_pressed(const struct device *dev, struct gpio_callback *cb,
+		    uint32_t pins)
+{
+	printk("Button1 pressed at %" PRIu32 "\n", k_cycle_get_32());
+}
+void button2_pressed(const struct device *dev, struct gpio_callback *cb,
+		    uint32_t pins)
+{
+	printk("Button2 pressed at %" PRIu32 "\n", k_cycle_get_32());
+}
 void button3_pressed(const struct device *dev, struct gpio_callback *cb,
 		    uint32_t pins)
 {
@@ -137,6 +162,49 @@ void main(void)
 
 	// ############# BUTTON ###############
 
+	// Button 0
+	if (!gpio_is_ready_dt(&button0)) {
+		printk("Error: button3 device %s is not ready\n",
+		       button0.port->name);
+		return;
+	}
+	if (ret != 0) {
+		printk("Error %d: failed to configure %s pin %d\n",
+		       ret, button0.port->name, button0.pin);
+		return;
+	}
+	gpio_init_callback(&button0_cb_data, button0_pressed, BIT(button0.pin));
+	gpio_add_callback(button0.port, &button0_cb_data);
+	printk("Set up button0 at %s pin %d\n", button0.port->name, button0.pin);
+	// Button 1
+	if (!gpio_is_ready_dt(&button1)) {
+		printk("Error: button1 device %s is not ready\n",
+		       button1.port->name);
+		return;
+	}
+	if (ret != 0) {
+		printk("Error %d: failed to configure %s pin %d\n",
+		       ret, button1.port->name, button1.pin);
+		return;
+	}
+	gpio_init_callback(&button1_cb_data, button1_pressed, BIT(button1.pin));
+	gpio_add_callback(button1.port, &button1_cb_data);
+	printk("Set up button1 at %s pin %d\n", button1.port->name, button1.pin);
+	// Button 2
+	if (!gpio_is_ready_dt(&button2)) {
+		printk("Error: button2 device %s is not ready\n",
+		       button2.port->name);
+		return;
+	}
+	if (ret != 0) {
+		printk("Error %d: failed to configure %s pin %d\n",
+		       ret, button2.port->name, button2.pin);
+		return;
+	}
+	gpio_init_callback(&button2_cb_data, button2_pressed, BIT(button2.pin));
+	gpio_add_callback(button2.port, &button2_cb_data);
+	printk("Set up button2 at %s pin %d\n", button2.port->name, button2.pin);
+	// Button 3
 	if (!gpio_is_ready_dt(&button3)) {
 		printk("Error: button3 device %s is not ready\n",
 		       button3.port->name);
@@ -150,6 +218,7 @@ void main(void)
 	gpio_init_callback(&button3_cb_data, button3_pressed, BIT(button3.pin));
 	gpio_add_callback(button3.port, &button3_cb_data);
 	printk("Set up button3 at %s pin %d\n", button3.port->name, button3.pin);
+	
 
 	// ############# INICIO DEL PROGRAMA ###############
 	printk("Press the button\n"); 
@@ -176,21 +245,89 @@ void main(void)
 	// 		return;
 	// 	}
 	
+	int fase_programa = 0;
+
 	while (1)
 	{
+		// Definimos las diferentes secciones que hay dentro del programa
+		// Inicio, Selecciona corriente, ya esta cargando el carro?, carga, finalización
+
 		izquierda_bt = gpio_pin_get_dt(&button0);
 		derecha_bt = gpio_pin_get_dt(&button1);
 		aceptar_bt = gpio_pin_get_dt(&button2);
 		atras_bt = gpio_pin_get_dt(&button3);
-		if (val3 != 0) {
-			printk("Se preciono el boton 3\n");
-			ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
-			if (ret) {
-				printk("Error %d: failed to set pulse width\n", ret);
-				return;
-			}
-			k_msleep(10);
+		
+		// Máquina de estados
+		switch(fase_programa) {
+			//case inicio:
+			case 0:
+				printk("inicio");
+				//:-) imprimir pantalla de inicio
+				k_msleep(2000);
+			break;
+
+			//case selecciona_corriente_6A:
+			case 1:
+
+				//:-) imprimir pantalla de selección corriente con 6A seleccionado
+				if (aceptar_bt != 0) {
+					// :-P asignar el valor a la variable corriente
+					printk("Corriente 6A seleccionada\n");
+					fase_programa = 3;
+
+					k_msleep(10);
+				}
+				if (derecha_bt != 0){
+					fase_programa = 2;
+
+					k_msleep(10);
+				}
+			break;
+
+			//case selecciona_corriente_16A:
+			case 2:
+
+				//:-) imprimir pantalla de selección corriente con 16A seleccionado
+				if (aceptar_bt != 0) {
+					printk("Corriente 16A seleccionada\n");
+					// :-P asignar el valor a la variable corriente
+					fase_programa = 3;
+
+					k_msleep(10);
+				}
+				if (izquierda_bt != 0){
+					fase_programa = 1;
+
+					k_msleep(10);
+				}
+			break;
+
+			// case comprobar si el carro esta conectado
+			case 3:
+				//:-) imprimir pantalla de mostrar que el carro esté conectado
+				// :-P condicional para ver si el carro esta conectado y proceder a la carga
+				k_msleep(1000);
+				fase_programa = 4;
+			break;
+
+			//case cargando
+			case 4:
+				//:-) imprimir pantalla de cargando
+				// :-P condicional para ver si el carro ya está full carga
+				k_msleep(4000);
+				fase_programa = 4;
+			break;
+
+			// case carga completada
+			case 5:
+				//:-) imprimir pantalla de carga completada
+			break;
+
+			default:
+				printk("error no esta en inguna fase del programa");
+				//:-) mostrar pantalla de error que diga que conecte y desconecte el cargador a la toma
 		}
+
 	}
 	
 
