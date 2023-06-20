@@ -12,7 +12,6 @@
 #define ___cpu_t_nested_OFFSET 0x0
 #define ___cpu_t_irq_stack_OFFSET 0x4
 #define ___cpu_t_arch_OFFSET 0x11
-#define ___cpu_t_SIZEOF 0x14
 #define ___kernel_t_cpus_OFFSET 0x0
 #define ___kernel_t_ready_q_OFFSET 0x14
 #define ___ready_q_t_cache_OFFSET 0x0
@@ -20,18 +19,14 @@
 #define ___thread_t_base_OFFSET 0x0
 #define ___thread_t_callee_saved_OFFSET 0x30
 #define ___thread_t_arch_OFFSET 0x68
-#define K_THREAD_SIZEOF 0x70
 #define __z_interrupt_stack_SIZEOF 0x800
-#define _DEVICE_STRUCT_SIZEOF 0x18
 #define _DEVICE_STRUCT_HANDLES_OFFSET 0x14
 #define _PM_DEVICE_STRUCT_FLAGS_OFFSET 0x0
 #define ___thread_arch_t_basepri_OFFSET 0x0
 #define ___thread_arch_t_swap_return_value_OFFSET 0x4
 #define ___basic_sf_t_pc_OFFSET 0x18
 #define ___basic_sf_t_xpsr_OFFSET 0x1c
-#define ___basic_sf_t_SIZEOF 0x20
 #define ___esf_t_SIZEOF 0x20
 #define ___callee_saved_t_SIZEOF 0x24
-#define _K_THREAD_NO_FLOAT_SIZEOF 0x70
 
 #endif /* __GEN_OFFSETS_H__ */

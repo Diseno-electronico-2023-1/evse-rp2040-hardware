@@ -1,7 +1,0 @@
-# ninja log v5
-6	240	7086335942395252	CMakeFiles/boot_stage2.dir/C_/Users/sergi/zephyrproject/modules/hal/rpi_pico/src/rp2_common/boot_stage2/boot2_w25q080.S.obj	2710e105d1eac4aa
-241	1035	7086335949265645	boot_stage2	5f6da970c2f507e4
-241	1035	7086335949265645	boot_stage2.bin	5f6da970c2f507e4
-241	1035	7086335949265645	boot_stage2.S	5f6da970c2f507e4
-241	1035	7086335949265645	C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app_limpio/build/bootloader/boot_stage2.bin	5f6da970c2f507e4
-241	1035	7086335949265645	C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app_limpio/build/bootloader/boot_stage2.S	5f6da970c2f507e4

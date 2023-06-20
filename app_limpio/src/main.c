@@ -46,6 +46,24 @@ static const struct gpio_dt_spec led_placa = GPIO_DT_SPEC_GET(LED0_NODE, gpios);
 static const struct gpio_dt_spec GFCI_test = GPIO_DT_SPEC_GET(GFCI_test_NODE, gpios);
 static const struct gpio_dt_spec GFCI_fault = GPIO_DT_SPEC_GET(GFCI_fault_NODE, gpios);
 
+// ############# BUTTONS ###############
+
+#define SW3_NODE	DT_ALIAS(sw3)
+
+#if !DT_NODE_HAS_STATUS(SW3_NODE, okay)
+#error "Unsupported board: sw devicetree alias is not defined"
+#endif
+
+static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+							      {0});
+static struct gpio_callback button3_cb_data;
+
+void button3_pressed(const struct device *dev, struct gpio_callback *cb,
+		    uint32_t pins)
+{
+	printk("Button3 pressed at %" PRIu32 "\n", k_cycle_get_32());
+}
+
 // ############# PWM ###############
 
 static const struct pwm_dt_spec pwm_rele1 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led1));
@@ -117,11 +135,29 @@ void main(void)
 
 	printk("PWMs configurados correctamente\n");
 
+	// ############# BUTTON ###############
 
+	if (!gpio_is_ready_dt(&button3)) {
+		printk("Error: button3 device %s is not ready\n",
+		       button3.port->name);
+		return;
+	}
+	if (ret != 0) {
+		printk("Error %d: failed to configure %s pin %d\n",
+		       ret, button3.port->name, button3.pin);
+		return;
+	}
+	gpio_init_callback(&button3_cb_data, button3_pressed, BIT(button3.pin));
+	gpio_add_callback(button3.port, &button3_cb_data);
+	printk("Set up button3 at %s pin %d\n", button3.port->name, button3.pin);
 
 	// ############# INICIO DEL PROGRAMA ###############
-
+	printk("Press the button\n"); 
 	//RELÉS OFF
+	int izquierda_bt;
+	int derecha_bt;
+	int aceptar_bt;
+	int atras_bt;
 	ret = pwm_set_dt(&pwm_rele1, period, period / 2U);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
@@ -134,13 +170,29 @@ void main(void)
 			return;
 		}
 
-	ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
-		if (ret) {
-			printk("Error %d: failed to set pulse width\n", ret);
-			return;
-		}
+	// ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
+	// 	if (ret) {
+	// 		printk("Error %d: failed to set pulse width\n", ret);
+	// 		return;
+	// 	}
 	
-
+	while (1)
+	{
+		izquierda_bt = gpio_pin_get_dt(&button0);
+		derecha_bt = gpio_pin_get_dt(&button1);
+		aceptar_bt = gpio_pin_get_dt(&button2);
+		atras_bt = gpio_pin_get_dt(&button3);
+		if (val3 != 0) {
+			printk("Se preciono el boton 3\n");
+			ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
+			if (ret) {
+				printk("Error %d: failed to set pulse width\n", ret);
+				return;
+			}
+			k_msleep(10);
+		}
+	}
+	
 
 // 	//REVISIÓN DE FALLAS: (SENSORES)
 // 		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
