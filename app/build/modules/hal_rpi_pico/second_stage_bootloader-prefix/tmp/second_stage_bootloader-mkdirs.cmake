@@ -4,19 +4,19 @@
 cmake_minimum_required(VERSION 3.5)
 
 file(MAKE_DIRECTORY
-  "C:/Users/sergi/zephyrproject/zephyr/modules/hal_rpi_pico/bootloader"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/bootloader"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/tmp"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src"
-  "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp"
+  "C:/Users/Usuario/zephyrproject/zephyr/modules/hal_rpi_pico/bootloader"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/bootloader"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/tmp"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src"
+  "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "C:/Users/sergi/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/Usuario/zephyrproject/evse-rp2040-hardware/app/build/modules/hal_rpi_pico/second_stage_bootloader-prefix/src/second_stage_bootloader-stamp${cfgdir}") # cfgdir has leading slash
 endif()

@@ -41,7 +41,7 @@
 
 // ############# PWM ###############
 
-#define PERIOD PWM_NSEC(100000000U)
+#define PERIOD PWM_NSEC(1000000U)
 
 // ############# ADC ###############
 
@@ -498,7 +498,7 @@ void main(void)
 	period = PERIOD;
 
 	//RELÉS OFF
-	ret = pwm_set_dt(&pwm_rele1, period, period / 2U);
+	ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
 		if (ret) {
 			printk("Error %d: failed to set pulse width\n", ret);
 			return;

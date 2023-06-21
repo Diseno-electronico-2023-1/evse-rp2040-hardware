@@ -72,9 +72,13 @@
 
 #define Z_SYSCALL_DRIVER_RESET(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, reset, RESET)
 
+#define Z_SYSCALL_DRIVER_RTC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, rtc, RTC)
+
 #define Z_SYSCALL_DRIVER_SDHC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, sdhc, SDHC)
 
 #define Z_SYSCALL_DRIVER_SENSOR(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, sensor, SENSOR)
+
+#define Z_SYSCALL_DRIVER_SMBUS(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, smbus, SMBUS)
 
 #define Z_SYSCALL_DRIVER_SPI(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, spi, SPI)
 
@@ -93,6 +97,12 @@
 #define Z_SYSCALL_DRIVER_ITS(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, its, ITS)
 
 #define Z_SYSCALL_DRIVER_PCIE_CTRL(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, pcie_ctrl, PCIE_CTRL)
+
+#define Z_SYSCALL_DRIVER_SVC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, svc, SVC)
+
+#define Z_SYSCALL_DRIVER_BC12_EMUL(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, bc12_emul, BC12_EMUL)
+
+#define Z_SYSCALL_DRIVER_BC12(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, bc12, BC12)
 
 #define Z_SYSCALL_DRIVER_TCPC(ptr, op) Z_SYSCALL_DRIVER_GEN(ptr, op, tcpc, TCPC)
 

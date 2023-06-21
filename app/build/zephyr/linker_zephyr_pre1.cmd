@@ -54,7 +54,7 @@ SECTIONS
  __rom_region_start = (0x10000000 + 0x100);
     rom_start :
  {
-. += 0x0;
+. = 0x0;
 . = ALIGN(4);
 . = ALIGN( 1 << LOG2CEIL(4 * 64) );
 . = ALIGN( 1 << LOG2CEIL(4 * (16 + 26)) );
@@ -88,25 +88,15 @@ KEEP(*(.gnu.linkonce.irq_vector_table*))
  initlevel :
  {
   __init_start = .;
-  __init_EARLY_start = .; KEEP(*(SORT(.z_init_EARLY[0-9]_*))); KEEP(*(SORT(.z_init_EARLY[1-9][0-9]_*)));
-  __init_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_1[0-9]_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1[1-9][0-9]_*)));
-  __init_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_2[0-9]_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2[1-9][0-9]_*)));
-  __init_POST_KERNEL_start = .; KEEP(*(SORT(.z_init_POST_KERNEL[0-9]_*))); KEEP(*(SORT(.z_init_POST_KERNEL[1-9][0-9]_*)));
-  __init_APPLICATION_start = .; KEEP(*(SORT(.z_init_APPLICATION[0-9]_*))); KEEP(*(SORT(.z_init_APPLICATION[1-9][0-9]_*)));
-  __init_SMP_start = .; KEEP(*(SORT(.z_init_SMP[0-9]_*))); KEEP(*(SORT(.z_init_SMP[1-9][0-9]_*)));
+  __init_EARLY_start = .; KEEP(*(SORT(.z_init_EARLY?_*))); KEEP(*(SORT(.z_init_EARLY??_*)));
+  __init_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_1?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_1??_*)));
+  __init_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_init_PRE_KERNEL_2?_*))); KEEP(*(SORT(.z_init_PRE_KERNEL_2??_*)));
+  __init_POST_KERNEL_start = .; KEEP(*(SORT(.z_init_POST_KERNEL?_*))); KEEP(*(SORT(.z_init_POST_KERNEL??_*)));
+  __init_APPLICATION_start = .; KEEP(*(SORT(.z_init_APPLICATION?_*))); KEEP(*(SORT(.z_init_APPLICATION??_*)));
+  __init_SMP_start = .; KEEP(*(SORT(.z_init_SMP?_*))); KEEP(*(SORT(.z_init_SMP??_*)));
   __init_end = .;
  } > FLASH
- devices :
- {
-  __device_start = .;
-  __device_EARLY_start = .; KEEP(*(SORT(.z_device_EARLY[0-9]_*))); KEEP(*(SORT(.z_device_EARLY[1-9][0-9]_*)));
-  __device_PRE_KERNEL_1_start = .; KEEP(*(SORT(.z_device_PRE_KERNEL_1[0-9]_*))); KEEP(*(SORT(.z_device_PRE_KERNEL_1[1-9][0-9]_*)));
-  __device_PRE_KERNEL_2_start = .; KEEP(*(SORT(.z_device_PRE_KERNEL_2[0-9]_*))); KEEP(*(SORT(.z_device_PRE_KERNEL_2[1-9][0-9]_*)));
-  __device_POST_KERNEL_start = .; KEEP(*(SORT(.z_device_POST_KERNEL[0-9]_*))); KEEP(*(SORT(.z_device_POST_KERNEL[1-9][0-9]_*)));
-  __device_APPLICATION_start = .; KEEP(*(SORT(.z_device_APPLICATION[0-9]_*))); KEEP(*(SORT(.z_device_APPLICATION[1-9][0-9]_*)));
-  __device_SMP_start = .; KEEP(*(SORT(.z_device_SMP[0-9]_*))); KEEP(*(SORT(.z_device_SMP[1-9][0-9]_*)));
-  __device_end = .;
- } > FLASH
+ device_area : SUBALIGN(4) { _device_list_start = .; KEEP(*(SORT(._device.static.*_?_*))); KEEP(*(SORT(._device.static.*_??_*))); _device_list_end = .; } > FLASH
  sw_isr_table :
  {
   . = ALIGN(4);
@@ -140,18 +130,8 @@ ztest :
 } > FLASH
  bt_l2cap_fixed_chan_area : SUBALIGN(4) { _bt_l2cap_fixed_chan_list_start = .; KEEP(*(SORT_BY_NAME(._bt_l2cap_fixed_chan.static.*))); _bt_l2cap_fixed_chan_list_end = .; } > FLASH
  bt_gatt_service_static_area : SUBALIGN(4) { _bt_gatt_service_static_list_start = .; KEEP(*(SORT_BY_NAME(._bt_gatt_service_static.static.*))); _bt_gatt_service_static_list_end = .; } > FLASH
- log_strings_sections : ALIGN_WITH_INPUT
- {
-  __log_strings_start = .;
-  KEEP(*(SORT(.log_strings*)));
-  __log_strings_end = .;
- } > FLASH
- log_const_sections : ALIGN_WITH_INPUT
- {
-  __log_const_start = .;
-  KEEP(*(SORT(.log_const_*)));
-  __log_const_end = .;
- } > FLASH
+ log_strings_area : SUBALIGN(4) { _log_strings_list_start = .; KEEP(*(SORT_BY_NAME(._log_strings.static.*))); _log_strings_list_end = .; } > FLASH
+ log_const_area : SUBALIGN(4) { _log_const_list_start = .; KEEP(*(SORT_BY_NAME(._log_const.static.*))); _log_const_list_end = .; } > FLASH
  log_backend_area : SUBALIGN(4) { _log_backend_list_start = .; KEEP(*(SORT_BY_NAME(._log_backend.static.*))); _log_backend_list_end = .; } > FLASH
  log_link_area : SUBALIGN(4) { _log_link_list_start = .; KEEP(*(SORT_BY_NAME(._log_link.static.*))); _log_link_list_end = .; } > FLASH
  tracing_backend_area : SUBALIGN(4) { _tracing_backend_list_start = .; KEEP(*(SORT_BY_NAME(._tracing_backend.static.*))); _tracing_backend_list_end = .; } > FLASH
@@ -166,30 +146,10 @@ ztest :
   __symbol_to_keep_end = .;
  } > FLASH
  shell_area : SUBALIGN(4) { _shell_list_start = .; KEEP(*(SORT_BY_NAME(._shell.static.*))); _shell_list_end = .; } > FLASH
- shell_root_cmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_root_cmds_start = .;
-  KEEP(*(SORT(.shell_root_cmd_*)));
-  __shell_root_cmds_end = .;
- } > FLASH
- shell_subcmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_subcmds_start = .;
-  KEEP(*(SORT(.shell_subcmd_*)));
-  __shell_subcmds_end = .;
- } > FLASH
- shell_dynamic_subcmds_sections : ALIGN_WITH_INPUT
- {
-  __shell_dynamic_subcmds_start = .;
-  KEEP(*(SORT(.shell_dynamic_subcmd_*)));
-  __shell_dynamic_subcmds_end = .;
- } > FLASH
- font_entry_sections : ALIGN_WITH_INPUT
- {
-  __font_entry_start = .;
-  KEEP(*(SORT_BY_NAME("._cfb_font.*")))
-  __font_entry_end = .;
- } > FLASH
+ shell_root_cmds_area : SUBALIGN(4) { _shell_root_cmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_root_cmds.static.*))); _shell_root_cmds_list_end = .; } > FLASH
+ shell_subcmds_area : SUBALIGN(4) { _shell_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_subcmds.static.*))); _shell_subcmds_list_end = .; } > FLASH
+ shell_dynamic_subcmds_area : SUBALIGN(4) { _shell_dynamic_subcmds_list_start = .; KEEP(*(SORT_BY_NAME(._shell_dynamic_subcmds.static.*))); _shell_dynamic_subcmds_list_end = .; } > FLASH
+ cfb_font_area : SUBALIGN(4) { _cfb_font_list_start = .; KEEP(*(SORT_BY_NAME(._cfb_font.static.*))); _cfb_font_list_end = .; } > FLASH
     rodata :
  {
  *(.rodata)
@@ -242,23 +202,9 @@ __ramfunc_load_start = LOADADDR(.ramfunc);
   KEEP(*(".z_devstate.*"));
                 __device_states_end = .;
         } > RAM AT > FLASH
- initshell : ALIGN_WITH_INPUT
- {
-  __shell_module_start = .;
-  KEEP(*(".shell_module_*"));
-  __shell_module_end = .;
-  __shell_cmd_start = .;
-  KEEP(*(".shell_cmd_*"));
-  __shell_cmd_end = .;
- } > RAM AT > FLASH
  log_mpsc_pbuf_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_mpsc_pbuf_list_start = .; *(SORT_BY_NAME(._log_mpsc_pbuf.static.*)); _log_mpsc_pbuf_list_end = .; } > RAM AT > FLASH
  log_msg_ptr_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_msg_ptr_list_start = .; KEEP(*(SORT_BY_NAME(._log_msg_ptr.static.*))); _log_msg_ptr_list_end = .; } > RAM AT > FLASH
- log_dynamic_sections : ALIGN_WITH_INPUT
- {
-  __log_dynamic_start = .;
-  KEEP(*(SORT(.log_dynamic_*)));
-  __log_dynamic_end = .;
- } > RAM AT > FLASH
+ log_dynamic_area : ALIGN_WITH_INPUT SUBALIGN(4) { _log_dynamic_list_start = .; KEEP(*(SORT_BY_NAME(._log_dynamic.static.*))); _log_dynamic_list_end = .; } > RAM AT > FLASH
  k_timer_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_timer_list_start = .; *(SORT_BY_NAME(._k_timer.static.*)); _k_timer_list_end = .; } > RAM AT > FLASH
  k_mem_slab_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_mem_slab_list_start = .; *(SORT_BY_NAME(._k_mem_slab.static.*)); _k_mem_slab_list_end = .; } > RAM AT > FLASH
  k_heap_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_heap_list_start = .; *(SORT_BY_NAME(._k_heap.static.*)); _k_heap_list_end = .; } > RAM AT > FLASH
@@ -271,11 +217,7 @@ __ramfunc_load_start = LOADADDR(.ramfunc);
  k_event_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_event_list_start = .; *(SORT_BY_NAME(._k_event.static.*)); _k_event_list_end = .; } > RAM AT > FLASH
  k_queue_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_queue_list_start = .; *(SORT_BY_NAME(._k_queue.static.*)); _k_queue_list_end = .; } > RAM AT > FLASH
  k_condvar_area : ALIGN_WITH_INPUT SUBALIGN(4) { _k_condvar_list_start = .; *(SORT_BY_NAME(._k_condvar.static.*)); _k_condvar_list_end = .; } > RAM AT > FLASH
- _net_buf_pool_area : ALIGN_WITH_INPUT SUBALIGN(4)
- {
-  _net_buf_pool_list = .;
-  KEEP(*(SORT_BY_NAME("._net_buf_pool.static.*")))
- } > RAM AT > FLASH
+ net_buf_pool_area : ALIGN_WITH_INPUT SUBALIGN(4) { _net_buf_pool_list_start = .; KEEP(*(SORT_BY_NAME(._net_buf_pool.static.*))); _net_buf_pool_list_end = .; } > RAM AT > FLASH
     __data_region_end = .;
    bss (NOLOAD) : ALIGN_WITH_INPUT
  {
