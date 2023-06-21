@@ -53,11 +53,6 @@
 #define DT_SPEC_AND_COMMA(node_id, prop, idx) \
 ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
 
-static const struct adc_dt_spec adc_channels[] = {
-	DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
-			     DT_SPEC_AND_COMMA)
-};
-
 double R2 = 100000;
 double A = 0.7768951640E-3;
 double B = 2.068786810E-4;
@@ -270,6 +265,7 @@ void main(void)
 	// ############# ADC ###############
 	
 	int err;
+	uint32_t rawValue;
 	uint16_t buf;
 	struct adc_sequence sequence = {
 		.buffer = &buf,
@@ -591,6 +587,29 @@ void main(void)
 	//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
 	//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
 	//LECTURA DE TEMPERATURA (SENSORES)
+	for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
+		printk("- %s, channel %d: ",
+			    adc_channels[i].dev->name,
+			    adc_channels[i].channel_id);
+
+		(void)adc_sequence_init_dt(&adc_channels[i], &sequence);
+
+
+		err = adc_read(adc_channels[i].dev, &sequence);
+		if (err < 0) {
+			printk("Could not read (%d)\n", err);
+			continue;
+		} else {
+			printk("RawValue %"PRIu16, buf);
+		}
+
+		rawValue = buf; 
+		//Esta es la variable que contiene el valor de la temperatura
+		double tempC = AdcToCelsius(rawValue);
+		printf(" = Temperature %.2f\n", tempC);
+		k_sleep(K_MSEC(1000));
+	}
+	k_sleep(K_MSEC(1000));
 	//LECTURA DE CONEXIÓN CON EL CARRO (CONECTOR)
 	//LECTURA GFCI (SENSORES)
 	//ESTADO DE CARGA (CONECTOR)
@@ -640,4 +659,12 @@ void main(void)
 		
 	}
 	return 0;
+}
+
+double AdcToCelsius(uint32_t rawValue){ 
+    double resistanceNTC = (rawValue * R2) / (1234 - rawValue);
+    double logNTC = log(resistanceNTC); 
+    double temp = (1 / (A + (B * logNTC) + (C * logNTC * logNTC * logNTC))) - KELVINCONSTANT; 
+
+    return temp; 
 }
