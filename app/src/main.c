@@ -587,29 +587,29 @@ void main(void)
 	//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
 	//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
 	//LECTURA DE TEMPERATURA (SENSORES)
-	for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
-		printk("- %s, channel %d: ",
-			    adc_channels[i].dev->name,
-			    adc_channels[i].channel_id);
+		for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
+			printk("- %s, channel %d: ",
+			    	adc_channels[i].dev->name,
+			    	adc_channels[i].channel_id);
 
-		(void)adc_sequence_init_dt(&adc_channels[i], &sequence);
+			(void)adc_sequence_init_dt(&adc_channels[i], &sequence);
 
 
-		err = adc_read(adc_channels[i].dev, &sequence);
-		if (err < 0) {
-			printk("Could not read (%d)\n", err);
-			continue;
-		} else {
-			printk("RawValue %"PRIu16, buf);
+			err = adc_read(adc_channels[i].dev, &sequence);
+			if (err < 0) {
+				printk("Could not read (%d)\n", err);
+				continue;
+			} else {
+				printk("RawValue %"PRIu16, buf);
+			}
+
+			rawValue = buf; 
+			//Esta es la variable que contiene el valor de la temperatura
+			double tempC = AdcToCelsius(rawValue);
+			printf(" = Temperature %.2f\n", tempC);
+			k_sleep(K_MSEC(1000));
 		}
-
-		rawValue = buf; 
-		//Esta es la variable que contiene el valor de la temperatura
-		double tempC = AdcToCelsius(rawValue);
-		printf(" = Temperature %.2f\n", tempC);
 		k_sleep(K_MSEC(1000));
-	}
-	k_sleep(K_MSEC(1000));
 	//LECTURA DE CONEXIÓN CON EL CARRO (CONECTOR)
 	//LECTURA GFCI (SENSORES)
 	//ESTADO DE CARGA (CONECTOR)
