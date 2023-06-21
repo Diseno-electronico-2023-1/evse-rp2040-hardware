@@ -510,7 +510,13 @@ void main(void)
 			return;
 		}
 	
+	//pilot_out on
 
+	ret = pwm_set_dt(&pwm_pilot_out, period, period / 2U);
+		if (ret) {
+			printk("Error %d: failed to set pulse width\n", ret);
+			return;
+		}
 
 // 	//REVISIÓN DE FALLAS: (SENSORES)
 // 		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
