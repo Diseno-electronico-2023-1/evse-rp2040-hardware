@@ -45,8 +45,26 @@
 
 // ############# ADC ###############
 
-	#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
-	ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
+#if !DT_NODE_EXISTS(DT_PATH(zephyr_user)) || \
+!DT_NODE_HAS_PROP(DT_PATH(zephyr_user), io_channels)
+#error "No suitable devicetree overlay specified"
+#endif
+
+#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
+
+static const struct adc_dt_spec adc_channels[] = {
+	DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
+			     DT_SPEC_AND_COMMA)
+};
+
+double R2 = 100000;
+double A = 0.7768951640E-3;
+double B = 2.068786810E-4;
+double C = 1.280087096E-7;
+double KELVINCONSTANT = 273.15;
+
+double AdcToCelsius(uint32_t rawValue);
 
 // ############# UART ###############
 
