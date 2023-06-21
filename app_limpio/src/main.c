@@ -193,6 +193,7 @@ void main(void)
 		}
 	}
 	
+	
 
 // 	//REVISIÓN DE FALLAS: (SENSORES)
 // 		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
