@@ -73,6 +73,7 @@
 		sw2 = &button2;
 		sw3 = &button3;
 		sw4 = &button4;
+		adcctrl = &adc;
 	};
 
 };
@@ -143,6 +144,7 @@
 };
 
 &adc {
+	status = "okay";
 	#address-cells = <1>;
 	#size-cells = <0>;
 
