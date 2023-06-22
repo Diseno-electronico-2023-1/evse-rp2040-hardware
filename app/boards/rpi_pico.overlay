@@ -109,7 +109,7 @@
 	divider-int-7 = <255>;
 };
 
-/* &i2c0 {
+&i2c0 {
 	clock-frequency = <I2C_BITRATE_STANDARD>;
 	status = "okay";
 	pinctrl-0 = <&i2c0_default>;
@@ -129,7 +129,7 @@
 	       segment-remap;
       };
 };
-*/
+
 
 &uart0 {
 	current-speed = <115200>;
