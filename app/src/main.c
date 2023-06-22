@@ -25,6 +25,7 @@
 #include <string.h>
 
 #include <zephyr/drivers/display.h>
+#include <zephyr/display/cfb.h>
 #include <zephyr/logging/log.h>
 
 
@@ -39,6 +40,12 @@
 
 #define PERIOD PWM_NSEC(100000000U)
 
+// ############# I2C DISPLAY ###############
+#include "Chargers.h"
+#include "Logo_b.h"
+#define DISPLAY_BUFFER_PITCH 128
+LOG_MODULE_REGISTER(display);
+
 
 // ############# GPIO ###############
 
@@ -49,16 +56,28 @@ static const struct gpio_dt_spec GFCI_fault = GPIO_DT_SPEC_GET(GFCI_fault_NODE, 
 // ############# BUTTONS ###############
 
 #define SW3_NODE	DT_ALIAS(sw3)
+#define SW0_NODE	DT_ALIAS(sw0)
+#define SW1_NODE	DT_ALIAS(sw1)
+#define SW2_NODE	DT_ALIAS(sw2)
 
+#if !DT_NODE_HAS_STATUS(SW0_NODE, okay)
+#error "Unsupported board: sw devicetree alias is not defined"
+#endif
+#if !DT_NODE_HAS_STATUS(SW1_NODE, okay)
+#error "Unsupported board: sw devicetree alias is not defined"
+#endif
+#if !DT_NODE_HAS_STATUS(SW2_NODE, okay)
+#error "Unsupported board: sw devicetree alias is not defined"
+#endif
 #if !DT_NODE_HAS_STATUS(SW3_NODE, okay)
 #error "Unsupported board: sw devicetree alias is not defined"
 #endif
 
-static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+static const struct gpio_dt_spec button0 = GPIO_DT_SPEC_GET_OR(SW0_NODE, gpios,
 							      {0});
-static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+static const struct gpio_dt_spec button1 = GPIO_DT_SPEC_GET_OR(SW1_NODE, gpios,
 							      {0});
-static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
+static const struct gpio_dt_spec button2 = GPIO_DT_SPEC_GET_OR(SW2_NODE, gpios,
 							      {0});
 static const struct gpio_dt_spec button3 = GPIO_DT_SPEC_GET_OR(SW3_NODE, gpios,
 							      {0});
@@ -95,6 +114,8 @@ static const struct pwm_dt_spec pwm_rele1 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led1));
 static const struct pwm_dt_spec pwm_rele2 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led2));
 static const struct pwm_dt_spec pwm_pilot_out = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led3));
 
+// ############# I2C DISPLAY ###############
+static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
 
 void main(void)
 {
@@ -159,6 +180,37 @@ void main(void)
 	}
 
 	printk("PWMs configurados correctamente\n");
+
+	// // ############# I2C DISPLAY ###############
+	if (display == NULL) {
+    LOG_ERR("device pointer is NULL");
+    return;
+	}
+
+	if (!device_is_ready(display)) {
+		LOG_ERR("display device is not ready");
+		return;
+	}
+
+	struct display_capabilities capabilities;
+	display_get_capabilities(display, &capabilities);
+
+	const uint16_t x_res = capabilities.x_resolution;
+	const uint16_t y_res = capabilities.y_resolution;
+
+	LOG_INF("x_resolution: %d", x_res);
+	LOG_INF("y_resolution: %d", y_res);
+	LOG_INF("supported pixel formats: %d", capabilities.supported_pixel_formats);
+	LOG_INF("screen_info: %d", capabilities.screen_info);
+	LOG_INF("current_pixel_format: %d", capabilities.current_pixel_format);
+	LOG_INF("current_orientation: %d", capabilities.current_orientation);
+		
+	const struct display_buffer_descriptor buf_desc = {
+		.width = x_res,
+		.height = y_res,
+		.buf_size = x_res * y_res,
+		.pitch = DISPLAY_BUFFER_PITCH
+	};
 
 	// ############# BUTTON ###############
 
@@ -246,12 +298,16 @@ void main(void)
 	// 	}
 	
 	int fase_programa = 0;
+	const uint8_t *current_image = buff;
 
 	while (1)
-	{
+	{	
+		
+		display_write(display, 0, 0, &buf_desc, current_image);
+
 		// Definimos las diferentes secciones que hay dentro del programa
 		// Inicio, Selecciona corriente, ya esta cargando el carro?, carga, finalización
-
+		
 		izquierda_bt = gpio_pin_get_dt(&button0);
 		derecha_bt = gpio_pin_get_dt(&button1);
 		aceptar_bt = gpio_pin_get_dt(&button2);
@@ -262,14 +318,17 @@ void main(void)
 			//case inicio:
 			case 0:
 				printk("inicio");
+				current_image = buff;
 				//:-) imprimir pantalla de inicio
-				k_msleep(2000);
+				k_msleep(10000);
+				fase_programa = 1;
 			break;
 
 			//case selecciona_corriente_6A:
 			case 1:
-
+				current_image = Char6;
 				//:-) imprimir pantalla de selección corriente con 6A seleccionado
+
 				if (aceptar_bt != 0) {
 					// :-P asignar el valor a la variable corriente
 					printk("Corriente 6A seleccionada\n");
@@ -288,6 +347,7 @@ void main(void)
 			case 2:
 
 				//:-) imprimir pantalla de selección corriente con 16A seleccionado
+				current_image = Char16;
 				if (aceptar_bt != 0) {
 					printk("Corriente 16A seleccionada\n");
 					// :-P asignar el valor a la variable corriente
@@ -305,22 +365,37 @@ void main(void)
 			// case comprobar si el carro esta conectado
 			case 3:
 				//:-) imprimir pantalla de mostrar que el carro esté conectado
+				current_image = Char0;
 				// :-P condicional para ver si el carro esta conectado y proceder a la carga
-				k_msleep(1000);
-				fase_programa = 4;
+				if (aceptar_bt != 0) {
+					printk("Caarga aceptada\n");
+					// :-P asignar el valor a la variable corriente
+					fase_programa = 4;
+
+					k_msleep(10);
+				}
+				if (atras_bt != 0){
+					fase_programa = 1;
+
+					k_msleep(10);
+				}
 			break;
 
 			//case cargando
 			case 4:
 				//:-) imprimir pantalla de cargando
+				current_image = Char50;
 				// :-P condicional para ver si el carro ya está full carga
-				k_msleep(4000);
-				fase_programa = 4;
+				if (atras_bt != 0){
+					fase_programa = 5;
+					k_msleep(10);
+				}
 			break;
 
 			// case carga completada
 			case 5:
 				//:-) imprimir pantalla de carga completada
+				current_image = Char100;
 			break;
 
 			default:
