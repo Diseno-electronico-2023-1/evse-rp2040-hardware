@@ -63,9 +63,30 @@ double AdcToCelsius(uint32_t rawValue);
 
 // ############# UART ###############
 
-	#define UART_DEVICE_NODE DT_CHOSEN(zephyr_shell_uart)
-	#define MSG_SIZE 32
-	K_MSGQ_DEFINE(uart_msgq, MSG_SIZE, 10, 4);
+//Command for PZEM
+uint8_t cmd_read[8] = {0xF8, 0x04, 0x00, 0x00, 0x00, 0x0A, 0x64, 0x64};
+
+//Reception variables
+#define BUFFER_SIZE 25
+uint8_t buffer[BUFFER_SIZE];
+size_t buffer_len = 0;
+uint8_t rx_data;
+float voltage, current;
+
+//Processing of data obtained
+void pzem_reading(uint8_t *data, size_t length)
+{
+    // Check if the received data matches the expected response format
+    if (length == 24 && data[0] == 0x04 && data[1] == 0x14) {
+        // Extract the relevant information from the received data
+        voltage = (data[2] << 8 | data[3]) / 10.0;
+		current = (data[4] << 8 | data[5] | data[6] << 24 | data[7] << 16) / 1000.0;
+
+        // Print the extracted values
+        printf("Voltage: %.1f V\n", voltage);
+        printf("Current: %.2f A\n", current);
+    }
+}
 
 // ############# I2C DISPLAY ###############
 // #include "logo_image.h"
@@ -116,52 +137,7 @@ static const struct adc_dt_spec adc_channels[] = {
 };
 
 // ############# UART ###############
-static const struct device *const uart_dev = DEVICE_DT_GET(UART_DEVICE_NODE);
-static char rx_buf[MSG_SIZE];
-static int rx_buf_pos;
-
-
-void serial_cb(const struct device *dev, void *user_data)
-{
-	uint8_t c;
-
-	if (!uart_irq_update(uart_dev)) {
-		return;
-	}
-
-	if (!uart_irq_rx_ready(uart_dev)) {
-		return;
-	}
-
-	/* read until FIFO empty */
-	while (uart_fifo_read(uart_dev, &c, 1) == 1) {
-		if ((c == '\n' || c == '\r') && rx_buf_pos > 0) {
-			/* terminate string */
-			rx_buf[rx_buf_pos] = '\0';
-
-			/* if queue is full, message is silently dropped */
-			k_msgq_put(&uart_msgq, &rx_buf, K_NO_WAIT);
-
-			/* reset the buffer (it was copied to the msgq) */
-			rx_buf_pos = 0;
-		} else if (rx_buf_pos < (sizeof(rx_buf) - 1)) {
-			rx_buf[rx_buf_pos++] = c;
-		}
-		/* else: characters beyond buffer size are dropped */
-	}
-}
-
-/*
- * Print a null-terminated string character by character to the UART interface
- */
-void print_uart(char *buf)
-{
-	int msg_len = strlen(buf);
-
-	for (int i = 0; i < msg_len; i++) {
-		uart_poll_out(uart_dev, buf[i]);
-	}
-}
+const struct device *uart_pzem = DEVICE_DT_GET(DT_NODELABEL(pio1_uart0));
 
 // ############# I2C DISPLAY ###############
 // static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
@@ -314,33 +290,10 @@ void main(void)
 	printk("PWMs configurados correctamente\n");
 
 	// ############# UART ###############
-	char tx_buf[MSG_SIZE];
-
-	if (!device_is_ready(uart_dev)) {
+	if (!device_is_ready(uart_pzem)) {
 		printk("UART device not found!");
-		return;
+		return 0;
 	}
-
-	/* configure interrupt and callback to receive data */
-	ret = uart_irq_callback_user_data_set(uart_dev, serial_cb, NULL);
-
-	if (ret < 0) {
-		if (ret == -ENOTSUP) {
-			printk("Interrupt-driven UART API support not enabled\n");
-		} else if (ret == -ENOSYS) {
-			printk("UART device does not support interrupt-driven API\n");
-		} else {
-			printk("Error setting UART callback: %d\n", ret);
-		}
-		return;
-	}
-	uart_irq_rx_enable(uart_dev);
-
-	printk("UART configurado correctamente\n");
-
-
-	print_uart("Hello! I'm your echo bot.\r\n");
-	print_uart("Tell me something and press enter:\r\n");
 
 	// // ############# I2C DISPLAY ###############
 	// if (display == NULL) {
@@ -586,6 +539,46 @@ void main(void)
 	
 	//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
 	//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
+		//Send command
+		for (size_t i = 0; i < sizeof(cmd_read); i++) {
+        	uart_poll_out(uart_pzem, cmd_read[i]);
+    	}
+
+		//Receive an answer
+		int len = uart_poll_in(uart_pzem, &rx_data);
+
+		//Verification of the reception status
+		if (len == -1)
+		{
+			printk("No data to receive!\n");
+		}else if (len == 0)
+		{
+			printk("Successful data reception!\n"); 
+		}else
+		{
+			printk("Failure to receive data!\n"); 
+		}
+
+		//Read data until the end of the answer
+		while (len == 0)
+		{
+			uart_poll_in(uart_pzem, &rx_data);
+			buffer[buffer_len] = rx_data;
+            buffer_len++;
+
+			if (buffer_len == 24)
+			{
+				len = -1; 
+			}
+		}
+
+		//Processing of read data
+		pzem_reading(buffer, buffer_len);
+
+		//Reset buffer for the next packet
+		buffer_len = 0; 
+		k_sleep(K_MSEC(1000));
+
 	//LECTURA DE TEMPERATURA (SENSORES)
 		for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
 			printk("- %s, channel %d: ",
