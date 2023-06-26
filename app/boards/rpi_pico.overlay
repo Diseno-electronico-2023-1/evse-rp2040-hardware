@@ -131,8 +131,9 @@
 };
 
 
-&uart0 {
-	current-speed = <115200>;
+pio1_uart0: &uart0 {
+	compatible = "raspberrypi,pico-uart-pio";
+	current-speed = <9600>;
 	status = "okay";
 	pinctrl-0 = <&uart0_default>;
 	pinctrl-names = "default";

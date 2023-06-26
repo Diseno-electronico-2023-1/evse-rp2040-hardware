@@ -40,6 +40,51 @@
 
 #define PERIOD PWM_NSEC(100000000U)
 
+// ############# ADC ###############
+
+#if !DT_NODE_EXISTS(DT_PATH(zephyr_user)) || \
+!DT_NODE_HAS_PROP(DT_PATH(zephyr_user), io_channels)
+#error "No suitable devicetree overlay specified"
+#endif
+
+#define DT_SPEC_AND_COMMA(node_id, prop, idx) \
+ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
+
+double R2 = 100000;
+double A = 0.7768951640E-3;
+double B = 2.068786810E-4;
+double C = 1.280087096E-7;
+double KELVINCONSTANT = 273.15;
+
+double AdcToCelsius(uint32_t rawValue);
+
+// ############# UART ###############
+
+//Command for PZEM
+uint8_t cmd_read[8] = {0xF8, 0x04, 0x00, 0x00, 0x00, 0x0A, 0x64, 0x64};
+
+//Reception variables
+#define BUFFER_SIZE 25
+uint8_t buffer[BUFFER_SIZE];
+size_t buffer_len = 0;
+uint8_t rx_data;
+float voltage, current;
+
+//Processing of data obtained
+void pzem_reading(uint8_t *data, size_t length)
+{
+    // Check if the received data matches the expected response format
+    if (length == 24 && data[0] == 0x04 && data[1] == 0x14) {
+        // Extract the relevant information from the received data
+        voltage = (data[2] << 8 | data[3]) / 10.0;
+		current = (data[4] << 8 | data[5] | data[6] << 24 | data[7] << 16) / 1000.0;
+
+        // Print the extracted values
+        printf("Voltage: %.1f V\n", voltage);
+        printf("Current: %.2f A\n", current);
+    }
+}
+
 // ############# I2C DISPLAY ###############
 #include "Chargers.h"
 #include "Logo_b.h"
@@ -114,6 +159,16 @@ static const struct pwm_dt_spec pwm_rele1 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led1));
 static const struct pwm_dt_spec pwm_rele2 = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led2));
 static const struct pwm_dt_spec pwm_pilot_out = PWM_DT_SPEC_GET(DT_ALIAS(pwm_led3));
 
+// ############# ADC ###############
+
+static const struct adc_dt_spec adc_channels[] = {
+	DT_FOREACH_PROP_ELEM(DT_PATH(zephyr_user), io_channels,
+			     DT_SPEC_AND_COMMA)
+};
+
+// ############# UART ###############
+const struct device *uart_pzem = DEVICE_DT_GET(DT_NODELABEL(pio1_uart0));
+
 // ############# I2C DISPLAY ###############
 static const struct device *display = DEVICE_DT_GET(DT_NODELABEL(ssd1306));
 
@@ -155,7 +210,37 @@ void main(void)
 
 	printk("GPIOs configurados correctamente\n");
 
+	// ############# ADC ###############
+	
+	int err;
+	uint32_t rawValue;
+	uint16_t buf;
+	struct adc_sequence sequence = {
+		.buffer = &buf,
+		/* buffer size in bytes, not number of samples */
+		.buffer_size = sizeof(buf),
+	};
+	/* Configure channels individually prior to sampling. */
+	for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
+		if (!device_is_ready(adc_channels[i].dev)) {
+			printk("ADC controller device not ready\n");
+			return;
+		}
 
+		err = adc_channel_setup_dt(&adc_channels[i]);
+		if (err < 0) {
+			printk("Could not setup channel #%d (%d)\n", i, err);
+			return;
+		}
+	}
+
+	printk("ADCs configurados correctamente\n");
+
+	// ############# UART ###############
+	if (!device_is_ready(uart_pzem)) {
+		printk("UART device not found!");
+		return 0;
+	}
 
 	// ############# PWM ###############
 	uint32_t period;
@@ -301,8 +386,76 @@ void main(void)
 	const uint8_t *current_image = buff;
 
 	while (1)
-	{	
+	{
+
+		//LECTURA DE CORRIENTE DE ENTRADA (SENSORES)
+		//LECTURA DE VOLTAJE DE ENTRADA (SENSORES)
+		//Send command
+		for (size_t i = 0; i < sizeof(cmd_read); i++) {
+        	uart_poll_out(uart_pzem, cmd_read[i]);
+    	}
+
+		//Receive an answer
+		int len = uart_poll_in(uart_pzem, &rx_data);
+
+		//Verification of the reception status
+		if (len == -1)
+		{
+			printk("No data to receive!\n");
+		}else if (len == 0)
+		{
+			printk("Successful data reception!\n"); 
+		}else
+		{
+			printk("Failure to receive data!\n"); 
+		}
+
+		//Read data until the end of the answer
+		while (len == 0)
+		{
+			uart_poll_in(uart_pzem, &rx_data);
+			buffer[buffer_len] = rx_data;
+            buffer_len++;
+
+			if (buffer_len == 24)
+			{
+				len = -1; 
+			}
+		}
+
+		//Processing of read data
+		pzem_reading(buffer, buffer_len);
+
+		//Reset buffer for the next packet
+		buffer_len = 0; 
+		k_sleep(K_MSEC(1000));
+
+		//LECTURA DE TEMPERATURA (SENSORES)
+		for (size_t i = 0U; i < ARRAY_SIZE(adc_channels); i++) {
+			printk("- %s, channel %d: ",
+			    	adc_channels[i].dev->name,
+			    	adc_channels[i].channel_id);
+
+			(void)adc_sequence_init_dt(&adc_channels[i], &sequence);
+
+
+			err = adc_read(adc_channels[i].dev, &sequence);
+			if (err < 0) {
+				printk("Could not read (%d)\n", err);
+				continue;
+			} else {
+				printk("RawValue %"PRIu16, buf);
+			}
+
+			rawValue = buf; 
+			//Esta es la variable que contiene el valor de la temperatura
+			double tempC = AdcToCelsius(rawValue);
+			printf(" = Temperature %.2f\n", tempC);
+			k_sleep(K_MSEC(1000));
+		}
+		k_sleep(K_MSEC(1000));	
 		
+
 		display_write(display, 0, 0, &buf_desc, current_image);
 
 		// Definimos las diferentes secciones que hay dentro del programa
@@ -517,4 +670,12 @@ void main(void)
 // 		}
 		
 // 	}
+}
+
+double AdcToCelsius(uint32_t rawValue){ 
+    double resistanceNTC = (R2 * (1350 - rawValue)) / rawValue;
+    double logNTC = log(resistanceNTC); 
+    double temp = (1 / (A + (B * logNTC) + (C * logNTC * logNTC * logNTC))) - KELVINCONSTANT; 
+
+    return temp; 
 }
