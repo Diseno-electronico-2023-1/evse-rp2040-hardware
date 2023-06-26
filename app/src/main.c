@@ -655,7 +655,7 @@ void main(void)
 }
 
 double AdcToCelsius(uint32_t rawValue){ 
-    double resistanceNTC = (rawValue * R2) / (1234 - rawValue);
+    double resistanceNTC = (R2 * (1350 - rawValue)) / rawValue;
     double logNTC = log(resistanceNTC); 
     double temp = (1 / (A + (B * logNTC) + (C * logNTC * logNTC * logNTC))) - KELVINCONSTANT; 
 
