@@ -52,6 +52,7 @@
 #define DT_SPEC_AND_COMMA(node_id, prop, idx) \
 ADC_DT_SPEC_GET_BY_IDX(node_id, idx),
 
+double tempC; 
 double R2 = 100000;
 double A = 0.7768951640E-3;
 double B = 2.068786810E-4;
@@ -451,7 +452,7 @@ void main(void)
 
 			rawValue = buf; 
 			//Esta es la variable que contiene el valor de la temperatura
-			double tempC = AdcToCelsius(rawValue);
+			tempC = AdcToCelsius(rawValue);
 			printf(" = Temperature %.2f\n", tempC);
 			k_sleep(K_MSEC(1000));
 		}
