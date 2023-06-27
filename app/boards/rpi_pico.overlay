@@ -131,8 +131,8 @@
 };
 
 
-pio1_uart0: &uart0 {
-	current-speed = <9600>;
+&uart0 {
+	current-speed = <115200>;
 	status = "okay";
 	pinctrl-0 = <&uart0_default>;
 	pinctrl-names = "default";
